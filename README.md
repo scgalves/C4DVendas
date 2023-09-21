@@ -1,5 +1,5 @@
 # C4DVendas
-[...]
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/scgalves/C4DVendas/blob/main/LICENSE)
 
 # Sobre o projeto
 Projeto desenvolvido em Delphi "Sistema de vendas do zero ao multicamadas" do canal Code4Delphi (https://www.youtube.com/playlist?list=PLLHSz4dOnnN3B4Bpizs8Z1REGTIUiMg8T) com algumas modificações minhas.
