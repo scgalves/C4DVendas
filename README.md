@@ -1,6 +1,6 @@
 # C4DVendas
 
-# Sobre o peojeto
+# Sobre o projeto
 Projeto desenvolvido em Delphi de um sistema de vendas "Do zero ao multicamadas" do canal Code4Delphi (https://www.youtube.com/playlist?list=PLLHSz4dOnnN3B4Bpizs8Z1REGTIUiMg8T) com algumas modificações minhas.
 
 # Tecnologia
