@@ -1,0 +1,396 @@
+object ViewHerancasBuscar: TViewHerancasBuscar
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'Buscar base'
+  ClientHeight = 547
+  ClientWidth = 918
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  KeyPreview = True
+  Padding.Left = 8
+  Padding.Top = 8
+  Padding.Right = 8
+  Padding.Bottom = 8
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  TextHeight = 15
+  object pnTopo: TPanel
+    Left = 8
+    Top = 8
+    Width = 902
+    Height = 62
+    Align = alTop
+    BevelEdges = [beLeft, beTop, beRight]
+    BevelOuter = bvNone
+    Color = clWhite
+    Padding.Left = 8
+    Padding.Top = 8
+    Padding.Right = 8
+    Padding.Bottom = 8
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitWidth = 898
+    object lblPesquisarPor: TLabel
+      AlignWithMargins = True
+      Left = 16
+      Top = 16
+      Width = 870
+      Height = 15
+      Margins.Left = 8
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 0
+      Align = alTop
+      Caption = 'Pesquisar por'
+      ExplicitWidth = 71
+    end
+    object edtBuscar: TEdit
+      AlignWithMargins = True
+      Left = 16
+      Top = 35
+      Width = 870
+      Height = 23
+      Margins.Left = 8
+      Margins.Top = 4
+      Margins.Right = 8
+      Margins.Bottom = 0
+      Align = alTop
+      TabOrder = 0
+      OnChange = edtBuscarChange
+      OnKeyDown = edtBuscarKeyDown
+      OnKeyPress = edtBuscarKeyPress
+      ExplicitWidth = 866
+    end
+  end
+  object pnGrid: TPanel
+    Left = 8
+    Top = 70
+    Width = 902
+    Height = 407
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clWhite
+    Padding.Left = 8
+    Padding.Top = 8
+    Padding.Right = 8
+    Padding.Bottom = 8
+    ParentBackground = False
+    TabOrder = 1
+    ExplicitWidth = 898
+    ExplicitHeight = 406
+    object DBGrid1: TDBGrid
+      Left = 16
+      Top = 18
+      Width = 870
+      Height = 348
+      DataSource = DataSource1
+      PopupMenu = PopupMenu1
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -12
+      TitleFont.Name = 'Segoe UI'
+      TitleFont.Style = []
+      OnDrawColumnCell = DBGrid1DrawColumnCell
+      OnDblClick = DBGrid1DblClick
+      OnKeyPress = DBGrid1KeyPress
+      OnTitleClick = DBGrid1TitleClick
+    end
+    object pnTotal: TPanel
+      Left = 8
+      Top = 372
+      Width = 886
+      Height = 27
+      Align = alBottom
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 1
+      ExplicitTop = 371
+      ExplicitWidth = 882
+      object lbTotal: TLabel
+        AlignWithMargins = True
+        Left = 727
+        Top = 0
+        Width = 151
+        Height = 27
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 8
+        Margins.Bottom = 0
+        Align = alRight
+        Alignment = taRightJustify
+        Caption = 'Registros localizados: 000000'
+        Layout = tlCenter
+        ExplicitHeight = 15
+      end
+    end
+  end
+  object pnRodape: TPanel
+    Left = 8
+    Top = 477
+    Width = 902
+    Height = 62
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = clWhite
+    Padding.Left = 8
+    Padding.Right = 8
+    ParentBackground = False
+    TabOrder = 2
+    ExplicitTop = 476
+    ExplicitWidth = 898
+    object rdgFiltros: TRadioGroup
+      AlignWithMargins = True
+      Left = 16
+      Top = 1
+      Width = 430
+      Height = 54
+      Margins.Left = 8
+      Margins.Top = 1
+      Margins.Right = 16
+      Margins.Bottom = 7
+      Align = alClient
+      Caption = 'Buscar por'
+      TabOrder = 0
+      OnClick = rdgFiltrosClick
+      ExplicitWidth = 426
+    end
+    object pnlBtnFechar1: TPanel
+      AlignWithMargins = True
+      Left = 786
+      Top = 8
+      Width = 100
+      Height = 46
+      Cursor = crHandPoint
+      Margins.Left = 0
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alRight
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 1
+      ExplicitLeft = 782
+      object pnlBtnFechar2: TPanel
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 94
+        Height = 40
+        Align = alClient
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        object btnFechar: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 94
+          Height = 40
+          Margins.Top = 20
+          Margins.Right = 20
+          Margins.Bottom = 20
+          Align = alClient
+          Caption = '&Fechar'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          OnClick = btnFecharClick
+          OnMouseEnter = btnCadastrarMouseEnter
+          OnMouseLeave = btnCadastrarMouseLeave
+          ExplicitLeft = 783
+          ExplicitTop = 20
+          ExplicitWidth = 100
+          ExplicitHeight = 44
+        end
+      end
+    end
+    object pnlBtnUtilizar1: TPanel
+      AlignWithMargins = True
+      Left = 678
+      Top = 8
+      Width = 100
+      Height = 46
+      Cursor = crHandPoint
+      Margins.Left = 0
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alRight
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 2
+      ExplicitLeft = 674
+      object pnlBtnUtilizar2: TPanel
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 94
+        Height = 40
+        Align = alClient
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        object btnUtilizar: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 94
+          Height = 40
+          Margins.Top = 20
+          Margins.Bottom = 20
+          Align = alClient
+          Caption = '&Utilizar'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          OnClick = btnUtilizarClick
+          OnMouseEnter = btnCadastrarMouseEnter
+          OnMouseLeave = btnCadastrarMouseLeave
+          ExplicitTop = 1
+        end
+      end
+    end
+    object pnlBtnAlterar1: TPanel
+      AlignWithMargins = True
+      Left = 570
+      Top = 8
+      Width = 100
+      Height = 46
+      Cursor = crHandPoint
+      Margins.Left = 0
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alRight
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 3
+      ExplicitLeft = 566
+      object pnlBtnAlterar2: TPanel
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 94
+        Height = 40
+        Align = alClient
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        object btnAlterar: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 94
+          Height = 40
+          Margins.Top = 20
+          Margins.Bottom = 20
+          Align = alClient
+          Caption = '&Alterar'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          OnClick = btnAlterarClick
+          OnMouseEnter = btnCadastrarMouseEnter
+          OnMouseLeave = btnCadastrarMouseLeave
+          ExplicitLeft = 571
+          ExplicitTop = 20
+          ExplicitWidth = 100
+          ExplicitHeight = 44
+        end
+      end
+    end
+    object pnlBtnCadastrar1: TPanel
+      AlignWithMargins = True
+      Left = 462
+      Top = 8
+      Width = 100
+      Height = 46
+      Cursor = crHandPoint
+      Margins.Left = 0
+      Margins.Top = 8
+      Margins.Right = 8
+      Margins.Bottom = 8
+      Align = alRight
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 4
+      ExplicitLeft = 458
+      object pnlBtnCadastrar2: TPanel
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 94
+        Height = 40
+        Align = alClient
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        object btnCadastrar: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 94
+          Height = 40
+          Margins.Top = 20
+          Margins.Bottom = 20
+          Align = alClient
+          Caption = '&Cadastrar'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          OnClick = btnCadastrarClick
+          OnMouseEnter = btnCadastrarMouseEnter
+          OnMouseLeave = btnCadastrarMouseLeave
+          ExplicitLeft = 465
+          ExplicitTop = 20
+          ExplicitWidth = 100
+          ExplicitHeight = 44
+        end
+      end
+    end
+  end
+  object DataSource1: TDataSource
+    Left = 56
+    Top = 128
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 168
+    Top = 128
+    object Atualizar1: TMenuItem
+      Caption = 'Atualizar'
+      OnClick = Atualizar1Click
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object Excluir1: TMenuItem
+      Caption = 'Excluir'
+      OnClick = Excluir1Click
+    end
+  end
+end
