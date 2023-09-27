@@ -7,9 +7,11 @@ Projeto desenvolvido em Delphi "Sistema de vendas do zero ao multicamadas" do ca
 # Imagens
 [...]
 
-# Tecnologia
+# Tecnologias
 * Delphi versão 11.3 CE Alexandria
-* Banco de dados criado no Firebird versão 2.5.9
+* FireDAC (conexão com o SGBD)
+* RTTI (validações de campos)
+* Banco de dados criado no SGBD Firebird versão 2.5.9
 
 # Autor
 César Cardoso
