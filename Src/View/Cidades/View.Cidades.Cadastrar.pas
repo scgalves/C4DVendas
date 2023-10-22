@@ -9,16 +9,17 @@ uses
 
 type
   TViewCidadesCadastrar = class(TViewHerancasCadastrar)
-    GridPanel1: TGridPanel;
+    edtID: TDBLabeledEdit;
+    [FieldName('NOME')]
+    edtNOME: TDBLabeledEdit;
     pnlUf: TPanel;
     lblUf: TLabel;
     [FieldName('UF')]
     cmbUf: TDBComboBox;
-    edtID: TDBLabeledEdit;
-    [FieldName('NOME')]
-    edtNOME: TDBLabeledEdit;
     [FieldName('CODIGO_IBGE')]
     edtCODIGO_IBGE: TDBLabeledEdit;
+    edtDTHR_INSERT: TDBLabeledEdit;
+    edtDTHR_UPDATE: TDBLabeledEdit;
     procedure btnGravarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -26,9 +27,6 @@ type
   public
 
   end;
-
-{var
-  ViewCidadesCadastrar: TViewCidadesCadastrar;}
 
 implementation
 
@@ -41,8 +39,9 @@ procedure TViewCidadesCadastrar.btnGravarClick(Sender: TObject);
 begin
   try
     DataSource1.Dataset.Post;
-  except on E: ExceptionsFieldName do
-    TUtils.TratarExceptionsFieldName(Self, E);
+  except
+    on E: ExceptionsFieldName do
+     TUtils.TratarExceptionsFieldName(Self, E);
   end;
   inherited;
 end;
@@ -56,8 +55,6 @@ begin
     DataSource1.DataSet.Append
   else
     DataSource1.DataSet.Edit;
-
-//  edtNOME.SetFocus;
 end;
 
 end.

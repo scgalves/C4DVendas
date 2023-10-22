@@ -37,7 +37,7 @@ type
 implementation
 
 uses
-  Winapi.Messages, Utils, System.Classes, Vcl.Forms;
+  Winapi.Messages, Utils, System.Classes, Vcl.Forms, Consts;
 
 { TWinControlHelper }
 
@@ -63,10 +63,10 @@ begin
   Self.DrawingStyle := gdsClassic;
   for i := 0 to Pred(Self.Columns.Count) do
   begin
-    Self.Columns[i].Title.Color := TUtils.C_GREEN_MID_LIGHT;//C_COR_FUNDO_TITULO_COLUNA_DBGRID;//C_AZUL_3;
+    Self.Columns[i].Title.Color := Consts.C_GREEN_MID_LIGHT;//C_COR_FUNDO_TITULO_COLUNA_DBGRID;//C_AZUL_3;
     Self.Columns[i].Title.Alignment := taCenter;
   end;
-  Self.TitleFont.Color := TUtils.C_WHITE;
+  Self.TitleFont.Color := Consts.C_WHITE;
   Self.TitleFont.Style := [fsBold];
 //  end;
 end;
@@ -83,7 +83,7 @@ begin
   Self.Margins.Top := 8;
   Self.Options := Self.Options - [dgEditing, dgColLines, dgRowLines, dgIndicator] +
     [dgRowSelect, dgAlwaysShowSelection];
-  Self.FixedColor := TUtils.C_GREEN_MID_LIGHT;//C_COR_FUNDO_TITULO_COLUNA_DBGRID;
+  Self.FixedColor := Consts.C_GREEN_MID_LIGHT;//C_COR_FUNDO_TITULO_COLUNA_DBGRID;
 end;
 
 { TSpeedButtonHelper }
@@ -91,8 +91,8 @@ end;
 procedure TSpeedButtonHelper.DefaultStyleButton(AGravar: Boolean = False);
 begin
   case AGravar of
-    True: Self.Font.Color := TUtils.C_WHITE;
-    False: Self.Font.Color := TUtils.C_GREEN_STRONG; // Parâmetro padrão
+    True: Self.Font.Color := Consts.C_WHITE;
+    False: Self.Font.Color := Consts.C_GREEN_STRONG; // Parâmetro padrão
   end;
   Self.Font.Size := 10;
   Self.Font.Style := [fsBold];
