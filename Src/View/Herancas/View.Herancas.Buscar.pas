@@ -5,36 +5,36 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons, Data.DB, Vcl.Grids, Vcl.DBGrids,
-  Vcl.Menus, FireDAC.Comp.Client;
+  Vcl.Menus, FireDAC.Comp.Client, Vcl.Mask;
 
 type
   TViewHerancasBuscar = class(TForm)
-    pnTopo: TPanel;
-    pnGrid: TPanel;
-    pnRodape: TPanel;
-    lblPesquisarPor: TLabel;
-    edtBuscar: TEdit;
-    rdgFiltros: TRadioGroup;
-    btnFechar: TSpeedButton;
-    btnUtilizar: TSpeedButton;
-    btnCadastrar: TSpeedButton;
-    DBGrid1: TDBGrid;
-    pnTotal: TPanel;
-    lbTotal: TLabel;
+    GridPanel1: TGridPanel;
     DataSource1: TDataSource;
-    btnAlterar: TSpeedButton;
     PopupMenu1: TPopupMenu;
     Atualizar1: TMenuItem;
     N1: TMenuItem;
     Excluir1: TMenuItem;
-    pnlBtnFechar1: TPanel;
-    pnlBtnFechar2: TPanel;
-    pnlBtnUtilizar1: TPanel;
-    pnlBtnUtilizar2: TPanel;
-    pnlBtnAlterar1: TPanel;
-    pnlBtnAlterar2: TPanel;
+    edtBuscar: TLabeledEdit;
+    pnlFiltroCombo: TPanel;
+    lblFiltroCombo: TLabel;
+    cmbFiltroCombo: TComboBox;
+    DBGrid1: TDBGrid;
+    rdgFiltros: TRadioGroup;
+    lbTotal: TLabel;
     pnlBtnCadastrar1: TPanel;
     pnlBtnCadastrar2: TPanel;
+    btnCadastrar: TSpeedButton;
+    pnlBtnAlterar1: TPanel;
+    pnlBtnAlterar2: TPanel;
+    btnAlterar: TSpeedButton;
+    pnlBtnUtilizar1: TPanel;
+    pnlBtnUtilizar2: TPanel;
+    btnUtilizar: TSpeedButton;
+    pnlBtnFechar1: TPanel;
+    pnlBtnFechar2: TPanel;
+    btnFechar: TSpeedButton;
+    pnlRodape: TPanel;
     procedure btnFecharClick(Sender: TObject);
     procedure btnUtilizarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -74,7 +74,7 @@ var
 implementation
 
 uses
-  Utils, Lib.Helper;
+  Utils, Lib.Helper, Consts;
 
 {$R *.dfm}
 
@@ -155,7 +155,7 @@ begin
   if not (Sender as TDBGrid).DataSource.DataSet.RecNo mod 2 = 0 then // Se ao dividir por 2, o resto <> 0
     if not (gdSelected in State) then // se a célula não está selecionada
     begin
-      (Sender as TDBGrid).Canvas.Brush.Color := TUtils.C_GREY_LIGHT; // define uma cor de fundo da linha
+      (Sender as TDBGrid).Canvas.Brush.Color := Consts.C_GREY_LIGHT; // define uma cor de fundo da linha
       (Sender as TDBGrid).Canvas.FillRect(Rect); // pinta a célula
       (Sender as TDBGrid).DefaultDrawDataCell(rect, Column.Field, State); // pinta o texto padrão
     end;
@@ -179,7 +179,7 @@ begin
 
   for I := 0 to Pred(Self.DBGrid1.Columns.Count) do
 //    Self.DBGrid1.Columns[I].Title.Font.Style := []; // Remove os estilos de fontes das colunas
-    Self.DBGrid1.Columns[I].Title.Font.Color := TUtils.C_WHITE; // Cor da fonte do título
+    Self.DBGrid1.Columns[I].Title.Font.Color := Consts.C_WHITE; // Cor da fonte do título
 
   LCampo := Column.FieldName.Trim;
   if (LCampo.IsEmpty) or (Column.Field.FieldKind in [fkCalculated, fkLookup, fkAggregate]) or
@@ -198,7 +198,7 @@ begin
   TFDQuery(Self.DataSource1.DataSet).First;
 
 //  Column.Title.Font.Style := [fsBold]; // Negrito na fonte da coluna selecionada
-  Column.Title.Font.Color := TUtils.C_BLACK;//C_GREEN_STRONG;//C_COR_FUNDO_TITULO_COLUNA_DBGRID;
+  Column.Title.Font.Color := Consts.C_BLACK;//C_GREEN_STRONG;//C_COR_FUNDO_TITULO_COLUNA_DBGRID;
 end;
 
 procedure TViewHerancasBuscar.edtBuscarChange(Sender: TObject);
@@ -242,7 +242,7 @@ end;
 procedure TViewHerancasBuscar.FormCreate(Sender: TObject);
 begin
   TUtils.ColorirPanelsDeBotoes([Self.pnlBtnAlterar1, Self.pnlBtnCadastrar1, Self.pnlBtnUtilizar1, Self.pnlBtnFechar1],
-    TUtils.C_GREEN_STRONG);
+    Consts.C_GREEN_STRONG);
 
   TUtils.EstiloPadraoEmBotoesSemGravar([Self.btnCadastrar, Self.btnAlterar, Self.btnUtilizar, Self.btnFechar]);
 

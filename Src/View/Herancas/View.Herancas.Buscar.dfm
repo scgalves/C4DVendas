@@ -3,8 +3,8 @@ object ViewHerancasBuscar: TViewHerancasBuscar
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Buscar base'
-  ClientHeight = 547
-  ClientWidth = 918
+  ClientHeight = 546
+  ClientWidth = 914
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,78 +21,165 @@ object ViewHerancasBuscar: TViewHerancasBuscar
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   TextHeight = 15
-  object pnTopo: TPanel
+  object GridPanel1: TGridPanel
     Left = 8
     Top = 8
-    Width = 902
-    Height = 62
-    Align = alTop
-    BevelEdges = [beLeft, beTop, beRight]
-    BevelOuter = bvNone
-    Color = clWhite
-    Padding.Left = 8
-    Padding.Top = 8
-    Padding.Right = 8
-    Padding.Bottom = 8
-    ParentBackground = False
-    TabOrder = 0
-    ExplicitWidth = 898
-    object lblPesquisarPor: TLabel
-      AlignWithMargins = True
-      Left = 16
-      Top = 16
-      Width = 870
-      Height = 15
-      Margins.Left = 8
-      Margins.Top = 8
-      Margins.Right = 8
-      Margins.Bottom = 0
-      Align = alTop
-      Caption = 'Pesquisar por'
-      ExplicitWidth = 71
-    end
-    object edtBuscar: TEdit
-      AlignWithMargins = True
-      Left = 16
-      Top = 35
-      Width = 870
-      Height = 23
-      Margins.Left = 8
-      Margins.Top = 4
-      Margins.Right = 8
-      Margins.Bottom = 0
-      Align = alTop
-      TabOrder = 0
-      OnChange = edtBuscarChange
-      OnKeyDown = edtBuscarKeyDown
-      OnKeyPress = edtBuscarKeyPress
-      ExplicitWidth = 866
-    end
-  end
-  object pnGrid: TPanel
-    Left = 8
-    Top = 70
-    Width = 902
-    Height = 407
+    Width = 898
+    Height = 467
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
-    Padding.Left = 8
-    Padding.Top = 8
-    Padding.Right = 8
-    Padding.Bottom = 8
+    ColumnCollection = <
+      item
+        Value = 12.500000000000000000
+      end
+      item
+        Value = 12.500000000000000000
+      end
+      item
+        Value = 12.500000000000000000
+      end
+      item
+        Value = 12.500000000000000000
+      end
+      item
+        Value = 12.500000000000000000
+      end
+      item
+        Value = 12.500000000000000000
+      end
+      item
+        Value = 12.500000000000000000
+      end
+      item
+        Value = 12.500000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        ColumnSpan = 6
+        Control = edtBuscar
+        Row = 0
+      end
+      item
+        Column = 6
+        ColumnSpan = 2
+        Control = pnlFiltroCombo
+        Row = 0
+      end
+      item
+        Column = 0
+        ColumnSpan = 8
+        Control = DBGrid1
+        Row = 1
+        RowSpan = 6
+      end
+      item
+        Column = 6
+        ColumnSpan = 2
+        Control = lbTotal
+        Row = 7
+      end>
     ParentBackground = False
-    TabOrder = 1
-    ExplicitWidth = 898
-    ExplicitHeight = 406
+    RowCollection = <
+      item
+        Value = 14.285714285714290000
+      end
+      item
+        Value = 14.285714285714290000
+      end
+      item
+        Value = 14.285714285714290000
+      end
+      item
+        Value = 14.285714285714290000
+      end
+      item
+        Value = 14.285714285714290000
+      end
+      item
+        Value = 14.285714285714290000
+      end
+      item
+        Value = 14.285714285714290000
+      end
+      item
+        SizeStyle = ssAbsolute
+        Value = 25.000000000000000000
+      end>
+    TabOrder = 0
+    ExplicitWidth = 894
+    ExplicitHeight = 441
+    object edtBuscar: TLabeledEdit
+      AlignWithMargins = True
+      Left = 8
+      Top = 24
+      Width = 657
+      Height = 23
+      Margins.Left = 8
+      Margins.Top = 24
+      Margins.Right = 8
+      Margins.Bottom = 0
+      Align = alTop
+      EditLabel.Width = 71
+      EditLabel.Height = 15
+      EditLabel.Caption = 'Pesquisar por'
+      TabOrder = 0
+      Text = ''
+      OnChange = edtBuscarChange
+      OnKeyDown = edtBuscarKeyDown
+      OnKeyPress = edtBuscarKeyPress
+    end
+    object pnlFiltroCombo: TPanel
+      Left = 673
+      Top = 0
+      Width = 225
+      Height = 63
+      Align = alClient
+      BevelOuter = bvNone
+      TabOrder = 1
+      object lblFiltroCombo: TLabel
+        AlignWithMargins = True
+        Left = 8
+        Top = 6
+        Width = 209
+        Height = 15
+        Margins.Left = 8
+        Margins.Top = 6
+        Margins.Right = 8
+        Margins.Bottom = 0
+        Align = alTop
+        Caption = 'lblFiltroCombo'
+        ExplicitWidth = 80
+      end
+      object cmbFiltroCombo: TComboBox
+        AlignWithMargins = True
+        Left = 8
+        Top = 24
+        Width = 209
+        Height = 22
+        Margins.Left = 8
+        Margins.Right = 8
+        Margins.Bottom = 0
+        Align = alTop
+        Style = csOwnerDrawFixed
+        TabOrder = 0
+      end
+    end
     object DBGrid1: TDBGrid
-      Left = 16
-      Top = 18
-      Width = 870
-      Height = 348
+      AlignWithMargins = True
+      Left = 8
+      Top = 63
+      Width = 882
+      Height = 379
+      Margins.Left = 8
+      Margins.Top = 0
+      Margins.Right = 8
+      Margins.Bottom = 0
+      Align = alClient
       DataSource = DataSource1
       PopupMenu = PopupMenu1
-      TabOrder = 0
+      TabOrder = 2
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -12
@@ -103,101 +190,87 @@ object ViewHerancasBuscar: TViewHerancasBuscar
       OnKeyPress = DBGrid1KeyPress
       OnTitleClick = DBGrid1TitleClick
     end
-    object pnTotal: TPanel
-      Left = 8
-      Top = 372
-      Width = 886
-      Height = 27
-      Align = alBottom
-      BevelOuter = bvNone
-      Color = clWhite
-      ParentBackground = False
-      TabOrder = 1
-      ExplicitTop = 371
-      ExplicitWidth = 882
-      object lbTotal: TLabel
-        AlignWithMargins = True
-        Left = 727
-        Top = 0
-        Width = 151
-        Height = 27
-        Margins.Left = 0
-        Margins.Top = 0
-        Margins.Right = 8
-        Margins.Bottom = 0
-        Align = alRight
-        Alignment = taRightJustify
-        Caption = 'Registros localizados: 000000'
-        Layout = tlCenter
-        ExplicitHeight = 15
-      end
+    object lbTotal: TLabel
+      AlignWithMargins = True
+      Left = 673
+      Top = 442
+      Width = 217
+      Height = 25
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 8
+      Margins.Bottom = 0
+      Align = alClient
+      Alignment = taRightJustify
+      Caption = 'Registros localizados: 000000'
+      Layout = tlCenter
+      ExplicitLeft = 739
+      ExplicitWidth = 151
+      ExplicitHeight = 15
     end
   end
-  object pnRodape: TPanel
+  object pnlRodape: TPanel
     Left = 8
-    Top = 477
-    Width = 902
-    Height = 62
+    Top = 475
+    Width = 898
+    Height = 63
     Align = alBottom
     BevelOuter = bvNone
-    Color = clWhite
-    Padding.Left = 8
-    Padding.Right = 8
-    ParentBackground = False
-    TabOrder = 2
-    ExplicitTop = 476
-    ExplicitWidth = 898
+    TabOrder = 1
     object rdgFiltros: TRadioGroup
       AlignWithMargins = True
-      Left = 16
-      Top = 1
-      Width = 430
-      Height = 54
+      Left = 8
+      Top = 0
+      Width = 438
+      Height = 55
       Margins.Left = 8
-      Margins.Top = 1
-      Margins.Right = 16
-      Margins.Bottom = 7
+      Margins.Top = 0
+      Margins.Right = 8
+      Margins.Bottom = 8
       Align = alClient
       Caption = 'Buscar por'
       TabOrder = 0
       OnClick = rdgFiltrosClick
-      ExplicitWidth = 426
+      ExplicitTop = 10
+      ExplicitWidth = 431
+      ExplicitHeight = 44
     end
     object pnlBtnFechar1: TPanel
       AlignWithMargins = True
-      Left = 786
-      Top = 8
-      Width = 100
-      Height = 46
+      Left = 795
+      Top = 7
+      Width = 95
+      Height = 47
       Cursor = crHandPoint
-      Margins.Left = 0
-      Margins.Top = 8
+      Margins.Left = 8
+      Margins.Top = 7
       Margins.Right = 8
-      Margins.Bottom = 8
+      Margins.Bottom = 9
       Align = alRight
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 782
+      ExplicitHeight = 62
       object pnlBtnFechar2: TPanel
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 94
-        Height = 40
+        Width = 89
+        Height = 41
         Align = alClient
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 90
+        ExplicitHeight = 30
         object btnFechar: TSpeedButton
           Left = 0
           Top = 0
-          Width = 94
-          Height = 40
+          Width = 89
+          Height = 41
           Margins.Top = 20
-          Margins.Right = 20
           Margins.Bottom = 20
           Align = alClient
           Caption = '&Fechar'
@@ -210,46 +283,46 @@ object ViewHerancasBuscar: TViewHerancasBuscar
           OnClick = btnFecharClick
           OnMouseEnter = btnCadastrarMouseEnter
           OnMouseLeave = btnCadastrarMouseLeave
-          ExplicitLeft = 783
-          ExplicitTop = 20
-          ExplicitWidth = 100
-          ExplicitHeight = 44
+          ExplicitTop = 3
+          ExplicitWidth = 90
+          ExplicitHeight = 25
         end
       end
     end
     object pnlBtnUtilizar1: TPanel
       AlignWithMargins = True
-      Left = 678
-      Top = 8
-      Width = 100
-      Height = 46
+      Left = 684
+      Top = 7
+      Width = 95
+      Height = 47
       Cursor = crHandPoint
-      Margins.Left = 0
-      Margins.Top = 8
+      Margins.Left = 8
+      Margins.Top = 7
       Margins.Right = 8
-      Margins.Bottom = 8
+      Margins.Bottom = 9
       Align = alRight
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
       TabOrder = 2
-      ExplicitLeft = 674
+      ExplicitHeight = 62
       object pnlBtnUtilizar2: TPanel
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 94
-        Height = 40
+        Width = 89
+        Height = 41
         Align = alClient
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
+        ExplicitHeight = 30
         object btnUtilizar: TSpeedButton
           Left = 0
           Top = 0
-          Width = 94
-          Height = 40
+          Width = 89
+          Height = 41
           Margins.Top = 20
           Margins.Bottom = 20
           Align = alClient
@@ -263,43 +336,48 @@ object ViewHerancasBuscar: TViewHerancasBuscar
           OnClick = btnUtilizarClick
           OnMouseEnter = btnCadastrarMouseEnter
           OnMouseLeave = btnCadastrarMouseLeave
+          ExplicitLeft = 8
           ExplicitTop = 1
+          ExplicitWidth = 91
+          ExplicitHeight = 107
         end
       end
     end
     object pnlBtnAlterar1: TPanel
       AlignWithMargins = True
-      Left = 570
-      Top = 8
-      Width = 100
-      Height = 46
+      Left = 573
+      Top = 7
+      Width = 95
+      Height = 47
       Cursor = crHandPoint
-      Margins.Left = 0
-      Margins.Top = 8
+      Margins.Left = 8
+      Margins.Top = 7
       Margins.Right = 8
-      Margins.Bottom = 8
+      Margins.Bottom = 9
       Align = alRight
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
       TabOrder = 3
-      ExplicitLeft = 566
+      ExplicitHeight = 62
       object pnlBtnAlterar2: TPanel
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 94
-        Height = 40
+        Width = 89
+        Height = 41
         Align = alClient
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 90
+        ExplicitHeight = 30
         object btnAlterar: TSpeedButton
           Left = 0
           Top = 0
-          Width = 94
-          Height = 40
+          Width = 89
+          Height = 41
           Margins.Top = 20
           Margins.Bottom = 20
           Align = alClient
@@ -313,9 +391,9 @@ object ViewHerancasBuscar: TViewHerancasBuscar
           OnClick = btnAlterarClick
           OnMouseEnter = btnCadastrarMouseEnter
           OnMouseLeave = btnCadastrarMouseLeave
-          ExplicitLeft = 571
-          ExplicitTop = 20
-          ExplicitWidth = 100
+          ExplicitLeft = 8
+          ExplicitTop = 4
+          ExplicitWidth = 98
           ExplicitHeight = 44
         end
       end
@@ -323,36 +401,38 @@ object ViewHerancasBuscar: TViewHerancasBuscar
     object pnlBtnCadastrar1: TPanel
       AlignWithMargins = True
       Left = 462
-      Top = 8
-      Width = 100
-      Height = 46
+      Top = 7
+      Width = 95
+      Height = 47
       Cursor = crHandPoint
-      Margins.Left = 0
-      Margins.Top = 8
+      Margins.Left = 8
+      Margins.Top = 7
       Margins.Right = 8
-      Margins.Bottom = 8
+      Margins.Bottom = 9
       Align = alRight
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
       TabOrder = 4
-      ExplicitLeft = 458
+      ExplicitHeight = 62
       object pnlBtnCadastrar2: TPanel
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 94
-        Height = 40
+        Width = 89
+        Height = 41
         Align = alClient
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 90
+        ExplicitHeight = 30
         object btnCadastrar: TSpeedButton
           Left = 0
           Top = 0
-          Width = 94
-          Height = 40
+          Width = 89
+          Height = 41
           Margins.Top = 20
           Margins.Bottom = 20
           Align = alClient
@@ -366,10 +446,9 @@ object ViewHerancasBuscar: TViewHerancasBuscar
           OnClick = btnCadastrarClick
           OnMouseEnter = btnCadastrarMouseEnter
           OnMouseLeave = btnCadastrarMouseLeave
-          ExplicitLeft = 465
-          ExplicitTop = 20
-          ExplicitWidth = 100
-          ExplicitHeight = 44
+          ExplicitLeft = 8
+          ExplicitWidth = 90
+          ExplicitHeight = 50
         end
       end
     end

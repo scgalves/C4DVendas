@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, View.Herancas.Buscar, Data.DB, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
-  Vcl.Grids, Vcl.DBGrids, Vcl.Menus;
+  Vcl.Grids, Vcl.DBGrids, Vcl.Menus, Vcl.Mask;
 
 type
   TViewCidadesBuscar = class(TViewHerancasBuscar)
@@ -70,6 +70,13 @@ begin
   inherited;
   if not Assigned(ModelCidadesDM) then
     ModelCidadesDM := TModelCidadesDM.Create(nil);
+
+  Self.DBGrid1.Columns[0].Width := 64;
+  Self.DBGrid1.Columns[1].Width := 400;
+  Self.DBGrid1.Columns[2].Width := 28;
+  Self.DBGrid1.Columns[3].Width := 80;
+  Self.DBGrid1.Columns[4].Width := 130;
+  Self.DBGrid1.Columns[5].Width := 130;
 end;
 
 procedure TViewCidadesBuscar.FormDestroy(Sender: TObject);
