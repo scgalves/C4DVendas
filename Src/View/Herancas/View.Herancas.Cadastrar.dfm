@@ -3,8 +3,8 @@ object ViewHerancasCadastrar: TViewHerancasCadastrar
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'ViewHerancasCadastrar'
-  ClientHeight = 353
-  ClientWidth = 784
+  ClientHeight = 352
+  ClientWidth = 780
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,27 +22,38 @@ object ViewHerancasCadastrar: TViewHerancasCadastrar
   OnKeyPress = FormKeyPress
   OnResize = FormResize
   TextHeight = 15
-  object pnlDados: TPanel
+  object pnlDados: TGridPanel
     Left = 8
     Top = 8
-    Width = 768
-    Height = 285
+    Width = 764
+    Height = 284
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
-    Padding.Left = 8
-    Padding.Top = 8
-    Padding.Right = 8
-    Padding.Bottom = 8
+    ColumnCollection = <
+      item
+        Value = 50.000000000000000000
+      end
+      item
+        Value = 50.000000000000000000
+      end>
+    ControlCollection = <>
     ParentBackground = False
+    RowCollection = <
+      item
+        Value = 50.000000000000000000
+      end
+      item
+        Value = 50.000000000000000000
+      end>
     TabOrder = 0
-    ExplicitWidth = 764
-    ExplicitHeight = 284
+    ExplicitWidth = 760
+    ExplicitHeight = 283
   end
   object pnlRodape: TPanel
     Left = 8
-    Top = 293
-    Width = 768
+    Top = 292
+    Width = 764
     Height = 52
     Align = alBottom
     BevelOuter = bvNone
@@ -50,11 +61,11 @@ object ViewHerancasCadastrar: TViewHerancasCadastrar
     Padding.Right = 8
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 292
-    ExplicitWidth = 764
+    ExplicitTop = 291
+    ExplicitWidth = 760
     object pnlBtnGravar: TPanel
       AlignWithMargins = True
-      Left = 516
+      Left = 512
       Top = 8
       Width = 110
       Height = 36
@@ -69,7 +80,7 @@ object ViewHerancasCadastrar: TViewHerancasCadastrar
       TabOrder = 0
       OnMouseEnter = btnGravarMouseEnter
       OnMouseLeave = btnGravarMouseLeave
-      ExplicitLeft = 512
+      ExplicitLeft = 508
       object btnGravar: TSpeedButton
         Left = 0
         Top = 0
@@ -92,7 +103,7 @@ object ViewHerancasCadastrar: TViewHerancasCadastrar
     end
     object pnlBtnCancelar1: TPanel
       AlignWithMargins = True
-      Left = 642
+      Left = 638
       Top = 8
       Width = 110
       Height = 36
@@ -107,7 +118,7 @@ object ViewHerancasCadastrar: TViewHerancasCadastrar
       ParentBackground = False
       TabOrder = 1
       OnClick = pnlBtnCancelar1Click
-      ExplicitLeft = 638
+      ExplicitLeft = 634
       object pnlBtnCancelar2: TPanel
         AlignWithMargins = True
         Left = 3

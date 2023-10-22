@@ -8,7 +8,7 @@ uses
 
 type
   TViewHerancasCadastrar = class(TForm)
-    pnlDados: TPanel;
+    pnlDados: TGridPanel;
     pnlRodape: TPanel;
     btnGravar: TSpeedButton;
     btnCancelar: TSpeedButton;
@@ -41,7 +41,7 @@ var
 implementation
 
 uses
-  Utils, Lib.Helper;
+  Utils, Lib.Helper, Consts;
 
 {$R *.dfm}
 
@@ -74,19 +74,19 @@ end;
 
 procedure TViewHerancasCadastrar.btnGravarMouseEnter(Sender: TObject);
 begin
-  Self.pnlBtnGravar.Color := TUtils.C_GREEN_MID_LIGHT;
+  Self.pnlBtnGravar.Color := Consts.C_GREEN_MID_LIGHT;
 end;
 
 procedure TViewHerancasCadastrar.btnGravarMouseLeave(Sender: TObject);
 begin
-  Self.pnlBtnGravar.Color := TUtils.C_GREEN_STRONG;
+  Self.pnlBtnGravar.Color := Consts.C_GREEN_STRONG;
 end;
 
 procedure TViewHerancasCadastrar.FormCreate(Sender: TObject);
 begin
   FIdRegistroAlterar := 0;
 
-  TUtils.ColorirPanelsDeBotoes([Self.pnlBtnGravar, Self.pnlBtnCancelar1], TUtils.C_GREEN_STRONG);
+  TUtils.ColorirPanelsDeBotoes([Self.pnlBtnGravar, Self.pnlBtnCancelar1], Consts.C_GREEN_STRONG);
 
   Self.btnGravar.DefaultStyleButton(True);
   Self.btnCancelar.DefaultStyleButton;
