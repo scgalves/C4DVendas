@@ -11,7 +11,7 @@ object ModelConexaoDM: TModelConexaoDM
       'Database=c4dvendas'
       'User_Name=SYSDBA'
       'Password=masterkey'
-      'Server=guimaraes_pc'
+      'Server=192.168.0.103'
       'Port=3259'
       'CharacterSet=WIN1252'
       'DriverID=FB')
