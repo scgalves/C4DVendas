@@ -11,16 +11,6 @@ type
   private
     class procedure SetFocusComponent(AWinControl: TWinControl);
   public
-    const C_GREEN_STRONG: TColor = $00376300;//$00D77800;//$00DA9C73; // Ex.: cor de botão sem foco; borda de botão
-    const C_GREEN_MID_LIGHT: TColor = $0062AD05;//$0074CF06;//$00FF0000; // Ex.: cor de botão com foco
-    const C_GREEN_LIGHT: TColor = $0000D484;//$000BA839;
-//    const C_COR_FUNDO_TITULO_COLUNA_DBGRID: TColor = $00E8C9A8; // Ex.: fundo dos títulos das colunas em DGBrids
-//    const C_AZUL_4: TColor = $00FFEFDF;
-//    const C_AZUL_5: TColor = $00D77800;
-    const C_WHITE: TColor = $00FFFFFF;
-    const C_BLACK: TColor = $00000000;
-    const C_GREY_LIGHT: TColor = $00EBEBEB; // Ex.: fundo dos linhas em DGBrids
-//    const C_COR_FUNDO_TITULO_COLUNA_DBGRID2: TColor = $000000FF;//$006D5545; // Ex.: fundo dos títulos das colunas em DBGrid
     class procedure TratarExceptionsFieldName(const AForm: TForm; const E: ExceptionsFieldName);
     class procedure MakeRoundedControl(AControl: TWinControl);
     class procedure ColorirPanelsDeBotoes(const APanels: TArray<TPanel>; const ACor: TColor);
@@ -51,12 +41,15 @@ type
     class function CnpjValido(const ACnpj: string): Boolean;
 
     class function EmailValido(const AEmail: string): Boolean;
+
+    class function GetDataHoraServidor: TDateTime;
   end;
 
 implementation
 
 uses
-  RTTI.FieldName, Winapi.Windows, Winapi.Messages, Lib.Helper, System.StrUtils, RegularExpressions;
+  RTTI.FieldName, Winapi.Windows, Winapi.Messages, Lib.Helper, System.StrUtils, RegularExpressions,
+  FireDAC.Comp.Client, Model.Conexao.DM, Consts;
 
 { TUtils }
 
@@ -202,6 +195,22 @@ begin
     TSpeedButton(AButtons[I]).DefaultStyleButton;
 end;
 
+class function TUtils.GetDataHoraServidor: TDateTime;
+var
+  qry: TFDQuery;
+begin
+  try
+    qry := TFDQuery.Create(nil);
+    qry.Connection := ModelConexaoDM.FDConnection1;
+    qry.SQL.Text := 'select current_timestamp from rdb$database';
+    qry.Open;
+    Result := qry.Fields[0].Value;
+  finally
+    qry.Close;
+    FreeAndNil(qry);
+  end;
+end;
+
 class procedure TUtils.HabilitarDesabilitarObjetos(const AControls: TArray<TControl>; const ADesabilitar: Boolean = True);
 var
   I: Word;
@@ -267,8 +276,8 @@ begin
     raise Exception.Create('O nome do Parent do Parent do botão ' + (Sender as TSpeedButton).Name + ' tem que' +
       ' terminar com "1". Ex.: pnlBtnCadastrar1.');
 
-  (LControl1 as TPanel).Color := TUtils.C_GREEN_MID_LIGHT;
-  (Sender as TSpeedButton).Font.Color := TUtils.C_GREEN_MID_LIGHT;
+  (LControl1 as TPanel).Color := Consts.C_GREEN_MID_LIGHT;
+  (Sender as TSpeedButton).Font.Color := Consts.C_GREEN_MID_LIGHT;
   (Sender as TSpeedButton).Tag := 1;
 end;
 
@@ -282,7 +291,7 @@ begin
     raise Exception.Create('Somente componentes da classe TSpeedButton podem usar este método.');
 
   (Sender as TSpeedButton).Tag := 0;
-  (Sender as TSpeedButton).Font.Color := TUtils.C_GREEN_STRONG;
+  (Sender as TSpeedButton).Font.Color := Consts.C_GREEN_STRONG;
 
   LControl2 := (Sender as TControl).Parent;
   if LControl2.ClassType <> TPanel then
@@ -304,8 +313,9 @@ begin
     raise Exception.Create('O nome do Parent do Parent do botão ' + (Sender as TSpeedButton).Name + ' tem que' +
       ' terminar com "1". Ex.: pnlBtnCadastrar1.');
 
-  (LControl1 as TPanel).Color := TUtils.C_GREEN_STRONG;
+  (LControl1 as TPanel).Color := Consts.C_GREEN_STRONG;
 end;
+
 
 class procedure TUtils.SetFocusComponent(AWinControl: TWinControl);
 var
