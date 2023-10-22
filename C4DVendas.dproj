@@ -114,42 +114,46 @@
         </DCCReference>
         <DCCReference Include="Src\Model\Cidades\Model.Cidades.DM.pas">
             <Form>ModelCidadesDM</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Src\View\Herancas\View.Herancas.Buscar.pas">
             <Form>ViewHerancasBuscar</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Src\View\Cidades\View.Cidades.Buscar.pas">
             <Form>ViewCidadesBuscar</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Src\View\Herancas\View.Herancas.Cadastrar.pas">
             <Form>ViewHerancasCadastrar</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Src\View\Cidades\View.Cidades.Cadastrar.pas">
             <Form>ViewCidadesCadastrar</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Src\Model\Pessoas\Model.Pessoas.DM.pas">
             <Form>ModelPessoasDM</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Src\View\Pessoas\View.Pessoas.Buscar.pas">
             <Form>ViewPessoasBuscar</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Src\View\Pessoas\View.Pessoas.Cadastrar.pas">
             <Form>ViewPessoasCadastrar</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Src\RTTI\RTTI.FieldName.pas"/>
         <DCCReference Include="Src\Exceptions\Exceptions.FieldName.pas"/>
         <DCCReference Include="Src\Utils\Utils.pas"/>
         <DCCReference Include="Src\View\Helper\Lib.Helper.pas"/>
+        <DCCReference Include="Src\Consts\Consts.pas"/>
+        <DCCReference Include="Src\Model\Grupos\Model.Grupos.DM.pas">
+            <Form>ModelGruposDM</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Src\View\Grupos\View.Grupos.Buscar.pas">
+            <Form>ViewGruposBuscar</Form>
+        </DCCReference>
+        <DCCReference Include="Src\View\Grupos\View.Grupos.Cadastrar.pas">
+            <Form>ViewGruposCadastrar</Form>
+        </DCCReference>
+        <None Include="C4DVendas.todo"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -176,13 +180,13 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
-                <DeployFile LocalName="Win32\Debug\C4DVendas.exe" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="bin\Win32\Debug\C4DVendas.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Code4Delphi\C4DVendas\bin\Win32\Debug\C4DVendas.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>C4DVendas.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Win32\Debug\C4DVendas.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>

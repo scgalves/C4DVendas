@@ -15,7 +15,11 @@ uses
   RTTI.FieldName in 'Src\RTTI\RTTI.FieldName.pas',
   Exceptions.FieldName in 'Src\Exceptions\Exceptions.FieldName.pas',
   Utils in 'Src\Utils\Utils.pas',
-  Lib.Helper in 'Src\View\Helper\Lib.Helper.pas';
+  Lib.Helper in 'Src\View\Helper\Lib.Helper.pas',
+  Consts in 'Src\Consts\Consts.pas',
+  Model.Grupos.DM in 'Src\Model\Grupos\Model.Grupos.DM.pas' {ModelGruposDM: TDataModule},
+  View.Grupos.Buscar in 'Src\View\Grupos\View.Grupos.Buscar.pas' {ViewGruposBuscar},
+  View.Grupos.Cadastrar in 'Src\View\Grupos\View.Grupos.Cadastrar.pas' {ViewGruposCadastrar};
 
 {$R *.res}
 
