@@ -22,6 +22,10 @@ type
     QLook: TFDQuery;
     QLookNOME: TStringField;
     QLookUF: TStringField;
+    QCidadesCadastroDTHR_INSERT: TSQLTimeStampField;
+    QCidadesCadastroDTHR_UPDATE: TSQLTimeStampField;
+    QCidadesBuscaDTHR_INSERT: TSQLTimeStampField;
+    QCidadesBuscaDTHR_UPDATE: TSQLTimeStampField;
     procedure QCidadesCadastroBeforePost(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
   private
@@ -50,7 +54,7 @@ uses
 procedure TModelCidadesDM.CidadesBuscar(const ACondicao: string);
 begin
   QCidadesBusca.Close;
-  QCidadesBusca.SQL.Text := 'select * from cidades ' + ACondicao;
+  QCidadesBusca.SQL.Text := 'select * from cidade ' + ACondicao;
   QCidadesBusca.Open;
 end;
 
@@ -88,7 +92,7 @@ end;
 procedure TModelCidadesDM.CadastrarGet(const AIdCidade: integer);
 begin
   QCidadesCadastro.Close;
-  QCidadesCadastro.SQL.Text := 'select * from cidades ' +
+  QCidadesCadastro.SQL.Text := 'select * from cidade ' +
     'where id = :pId';
   QCidadesCadastro.ParamByName('pId').AsInteger := AIdCidade;
   QCidadesCadastro.Open;
