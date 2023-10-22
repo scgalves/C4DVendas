@@ -32,71 +32,6 @@ object ViewPrincipal: TViewPrincipal
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object lblC_AZUL_1: TLabel
-    Left = 432
-    Top = 8
-    Width = 139
-    Height = 33
-    Caption = 'C_AZUL_1'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 14326899
-    Font.Height = -27
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object lblC_AZUL_2: TLabel
-    Left = 432
-    Top = 55
-    Width = 139
-    Height = 33
-    Caption = 'C_AZUL_2'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlue
-    Font.Height = -27
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object lblC_AZUL_3: TLabel
-    Left = 432
-    Top = 102
-    Width = 139
-    Height = 33
-    Caption = 'C_AZUL_3'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 15255976
-    Font.Height = -27
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object lblC_AZUL_4: TLabel
-    Left = 432
-    Top = 149
-    Width = 139
-    Height = 33
-    Caption = 'C_AZUL_4'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 16773087
-    Font.Height = -27
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object lblC_AZUL_5: TLabel
-    Left = 432
-    Top = 196
-    Width = 139
-    Height = 33
-    Caption = 'C_AZUL_5'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 16734553
-    Font.Height = -27
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
   object pnLogoBack: TPanel
     Left = 8
     Top = 341
@@ -459,113 +394,37 @@ object ViewPrincipal: TViewPrincipal
       end
     end
   end
-  object pnlC_AZUL_1: TPanel
-    Left = 592
-    Top = 8
-    Width = 185
-    Height = 41
-    Caption = 'C_AZUL_1'
-    Color = 14326899
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentBackground = False
-    ParentFont = False
-    TabOrder = 1
-  end
-  object pnlC_AZUL_2: TPanel
-    Left = 592
-    Top = 55
-    Width = 185
-    Height = 41
-    Caption = 'C_AZUL_2'
-    Color = clBlue
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentBackground = False
-    ParentFont = False
-    TabOrder = 2
-  end
-  object pnlC_AZUL_3: TPanel
-    Left = 592
-    Top = 102
-    Width = 185
-    Height = 41
-    Caption = 'C_AZUL_3'
-    Color = 15255976
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentBackground = False
-    ParentFont = False
-    TabOrder = 3
-  end
-  object pnlC_AZUL_4: TPanel
-    Left = 592
-    Top = 149
-    Width = 185
-    Height = 41
-    Caption = 'C_AZUL_4'
-    Color = 16773087
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentBackground = False
-    ParentFont = False
-    TabOrder = 4
-  end
-  object pnlC_AZUL_5: TPanel
-    Left = 592
-    Top = 196
-    Width = 185
-    Height = 41
-    Caption = 'C_AZUL_5'
-    Color = 3162650
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentBackground = False
-    ParentFont = False
-    TabOrder = 5
-  end
   object MainMenu1: TMainMenu
     Left = 336
     Top = 80
     object Cadastros1: TMenuItem
       Caption = 'Cadastros'
-      object Empresas1: TMenuItem
-        Caption = 'Empresas'
-        OnClick = Empresas1Click
+      object mniEmpresa: TMenuItem
+        Caption = 'Empresa'
+        OnClick = mniEmpresaClick
       end
-      object Cidades1: TMenuItem
-        Caption = 'Cidades'
-        OnClick = Cidades1Click
+      object mniCidade: TMenuItem
+        Caption = 'Cidade'
+        OnClick = mniCidadeClick
       end
-      object Pessoas1: TMenuItem
-        Caption = 'Pessoas'
-        OnClick = Pessoas1Click
+      object mniPessoa: TMenuItem
+        Caption = 'Pessoa'
+        OnClick = mniPessoaClick
       end
       object N1: TMenuItem
         Caption = '-'
       end
-      object Subgruposdeprodutos1: TMenuItem
-        Caption = 'Subgrupos de produtos'
-        OnClick = Subgruposdeprodutos1Click
+      object mniGrupoProduto: TMenuItem
+        Caption = 'Grupo de produto'
+        OnClick = mniGrupoProdutoClick
       end
-      object Produtos1: TMenuItem
-        Caption = 'Produtos'
-        OnClick = Produtos1Click
+      object mniSubgrupoProduto: TMenuItem
+        Caption = 'Subgrupo de produto'
+        OnClick = mniSubgrupoProdutoClick
+      end
+      object mniProduto: TMenuItem
+        Caption = 'Produto'
+        OnClick = mniProdutoClick
       end
     end
     object Movimentaes1: TMenuItem

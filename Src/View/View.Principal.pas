@@ -14,12 +14,12 @@ type
     Movimentaes1: TMenuItem;
     Financeiro1: TMenuItem;
     Fiscal1: TMenuItem;
-    Empresas1: TMenuItem;
-    Cidades1: TMenuItem;
-    Pessoas1: TMenuItem;
+    mniEmpresa: TMenuItem;
+    mniCidade: TMenuItem;
+    mniPessoa: TMenuItem;
     N1: TMenuItem;
-    Subgruposdeprodutos1: TMenuItem;
-    Produtos1: TMenuItem;
+    mniSubgrupoProduto: TMenuItem;
+    mniProduto: TMenuItem;
     Vendas1: TMenuItem;
     Contasareceber1: TMenuItem;
     Configuraes1: TMenuItem;
@@ -31,29 +31,21 @@ type
     lbYoutube: TLabel;
     lbGitHub: TLabel;
     Label1: TLabel;
-    lblC_AZUL_1: TLabel;
-    lblC_AZUL_2: TLabel;
-    pnlC_AZUL_1: TPanel;
-    pnlC_AZUL_2: TPanel;
-    pnlC_AZUL_3: TPanel;
-    lblC_AZUL_3: TLabel;
-    lblC_AZUL_4: TLabel;
-    pnlC_AZUL_4: TPanel;
-    pnlC_AZUL_5: TPanel;
-    lblC_AZUL_5: TLabel;
+    mniGrupoProduto: TMenuItem;
     procedure lbYoutubeClick(Sender: TObject);
     procedure lbYoutubeMouseEnter(Sender: TObject);
     procedure lbYoutubeMouseLeave(Sender: TObject);
-    procedure Cidades1Click(Sender: TObject);
+    procedure mniCidadeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Pessoas1Click(Sender: TObject);
-    procedure Empresas1Click(Sender: TObject);
-    procedure Subgruposdeprodutos1Click(Sender: TObject);
-    procedure Produtos1Click(Sender: TObject);
+    procedure mniPessoaClick(Sender: TObject);
+    procedure mniEmpresaClick(Sender: TObject);
+    procedure mniSubgrupoProdutoClick(Sender: TObject);
+    procedure mniProdutoClick(Sender: TObject);
     procedure Vendas1Click(Sender: TObject);
     procedure Contasareceber1Click(Sender: TObject);
     procedure Configuraes1Click(Sender: TObject);
     procedure NFCe1Click(Sender: TObject);
+    procedure mniGrupoProdutoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -66,11 +58,11 @@ var
 implementation
 
 uses
-  View.Cidades.Buscar, View.Pessoas.Buscar;
+  View.Cidades.Buscar, View.Pessoas.Buscar, View.Grupos.Buscar;
 
 {$R *.dfm}
 
-procedure TViewPrincipal.Cidades1Click(Sender: TObject);
+procedure TViewPrincipal.mniCidadeClick(Sender: TObject);
 begin
   if not Assigned(ViewCidadesBuscar) then
     ViewCidadesBuscar := TViewCidadesBuscar.Create(nil);
@@ -91,9 +83,20 @@ begin
   ShowMessage('Em construção');
 end;
 
-procedure TViewPrincipal.Empresas1Click(Sender: TObject);
+procedure TViewPrincipal.mniEmpresaClick(Sender: TObject);
 begin
   ShowMessage('Em construção');
+end;
+
+procedure TViewPrincipal.mniGrupoProdutoClick(Sender: TObject);
+begin
+  if not Assigned(ViewPessoasBuscar) then
+    ViewGruposBuscar := TViewGruposBuscar.Create(nil);
+  try
+    ViewGruposBuscar.ShowModal;
+  finally
+    FreeAndNil(ViewGruposBuscar);
+  end;
 end;
 
 procedure TViewPrincipal.FormCreate(Sender: TObject);
@@ -121,7 +124,7 @@ begin
   ShowMessage('Em construção');
 end;
 
-procedure TViewPrincipal.Pessoas1Click(Sender: TObject);
+procedure TViewPrincipal.mniPessoaClick(Sender: TObject);
 begin
   if not Assigned(ViewPessoasBuscar) then
     ViewPessoasBuscar := TViewPessoasBuscar.Create(nil);
@@ -132,12 +135,12 @@ begin
   end;
 end;
 
-procedure TViewPrincipal.Produtos1Click(Sender: TObject);
+procedure TViewPrincipal.mniProdutoClick(Sender: TObject);
 begin
   ShowMessage('Em construção');
 end;
 
-procedure TViewPrincipal.Subgruposdeprodutos1Click(Sender: TObject);
+procedure TViewPrincipal.mniSubgrupoProdutoClick(Sender: TObject);
 begin
   ShowMessage('Em construção');
 end;
