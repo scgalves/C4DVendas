@@ -72,8 +72,8 @@ begin
     ModelCidadesDM := TModelCidadesDM.Create(nil);
 
   Self.DBGrid1.Columns[0].Width := 64;
-  Self.DBGrid1.Columns[1].Width := 400;
-  Self.DBGrid1.Columns[2].Width := 28;
+  Self.DBGrid1.Columns[1].Width := 431;
+  Self.DBGrid1.Columns[2].Width := 30;
   Self.DBGrid1.Columns[3].Width := 80;
   Self.DBGrid1.Columns[4].Width := 130;
   Self.DBGrid1.Columns[5].Width := 130;

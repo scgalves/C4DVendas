@@ -71,9 +71,9 @@ begin
     ModelGruposDM := TModelGruposDM.Create(nil);
 
   Self.DBGrid1.Columns[0].Width := 64;
-  Self.DBGrid1.Columns[1].Width := 364;
-  Self.DBGrid1.Columns[2].Width := 208;
-  Self.DBGrid1.Columns[3].Width := 208;
+  Self.DBGrid1.Columns[1].Width := 541;
+  Self.DBGrid1.Columns[2].Width := 130;
+  Self.DBGrid1.Columns[3].Width := 130;
 end;
 
 procedure TViewGruposBuscar.FormDestroy(Sender: TObject);

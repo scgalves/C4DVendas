@@ -19,7 +19,10 @@ uses
   Consts in 'Src\Consts\Consts.pas',
   Model.Grupos.DM in 'Src\Model\Grupos\Model.Grupos.DM.pas' {ModelGruposDM: TDataModule},
   View.Grupos.Buscar in 'Src\View\Grupos\View.Grupos.Buscar.pas' {ViewGruposBuscar},
-  View.Grupos.Cadastrar in 'Src\View\Grupos\View.Grupos.Cadastrar.pas' {ViewGruposCadastrar};
+  View.Grupos.Cadastrar in 'Src\View\Grupos\View.Grupos.Cadastrar.pas' {ViewGruposCadastrar},
+  Model.Subgrupos.DM in 'Src\Model\Subgrupos\Model.Subgrupos.DM.pas' {ModelSubgruposDM: TDataModule},
+  View.Subgrupos.Buscar in 'Src\View\Subgrupos\View.Subgrupos.Buscar.pas' {ViewSubgruposBuscar},
+  View.Subgrupos.Cadastrar in 'Src\View\Subgrupos\View.Subgrupos.Cadastrar.pas' {ViewSubgruposCadastrar};
 
 {$R *.res}
 

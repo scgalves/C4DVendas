@@ -1,21 +1,20 @@
 inherited ViewCidadesBuscar: TViewCidadesBuscar
   Caption = 'Cidades buscar'
+  ClientWidth = 914
   OnDestroy = FormDestroy
-  ExplicitWidth = 922
-  ExplicitHeight = 583
   TextHeight = 15
   inherited GridPanel1: TGridPanel
-    ExplicitWidth = 890
-    ExplicitHeight = 528
+    Width = 898
+    inherited edtBuscar: TLabeledEdit
+      Width = 657
+    end
     inherited pnlFiltroCombo: TPanel
+      Left = 673
+      Width = 225
       Visible = False
-      ExplicitLeft = 671
-      ExplicitWidth = 223
-      inherited cmbFiltroCombo: TComboBox
-        ExplicitWidth = 207
-      end
     end
     inherited DBGrid1: TDBGrid
+      Width = 882
       Columns = <
         item
           Expanded = False
@@ -41,16 +40,23 @@ inherited ViewCidadesBuscar: TViewCidadesBuscar
         item
           Expanded = False
           FieldName = 'DTHR_INSERT'
-          Width = 130
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'DTHR_UPDATE'
-          Width = 130
           Visible = True
         end>
     end
+    inherited lbTotal: TLabel
+      Left = 673
+      Width = 217
+    end
+  end
+  inherited pnlRodape: TPanel
+    Width = 898
+    ExplicitTop = 474
+    ExplicitWidth = 894
     inherited rdgFiltros: TRadioGroup
       Columns = 3
       ItemIndex = 1
@@ -58,37 +64,42 @@ inherited ViewCidadesBuscar: TViewCidadesBuscar
         'C'#243'digo'
         'Nome'
         'UF')
+      ExplicitTop = 0
+      ExplicitWidth = 434
+      ExplicitHeight = 55
     end
-    inherited lbTotal: TLabel
-      ExplicitLeft = 735
-      ExplicitTop = 441
-    end
-    inherited pnlBtnCadastrar1: TPanel
-      ExplicitLeft = 455
-      ExplicitTop = 473
-      inherited pnlBtnCadastrar2: TPanel
-        Width = 90
-        inherited btnCadastrar: TSpeedButton
-          Width = 90
-        end
+    inherited pnlBtnFechar1: TPanel
+      ExplicitLeft = 791
+      ExplicitHeight = 47
+      inherited pnlBtnFechar2: TPanel
+        ExplicitWidth = 89
+        ExplicitHeight = 41
       end
     end
     inherited pnlBtnUtilizar1: TPanel
+      ExplicitLeft = 680
+      ExplicitHeight = 47
       inherited pnlBtnUtilizar2: TPanel
-        Width = 89
+        ExplicitHeight = 41
         inherited btnUtilizar: TSpeedButton
-          Width = 89
+          ExplicitWidth = 89
         end
       end
     end
-    inherited pnlBtnFechar1: TPanel
-      ExplicitLeft = 790
-      ExplicitTop = 473
-      inherited pnlBtnFechar2: TPanel
-        Width = 90
-        inherited btnFechar: TSpeedButton
-          Width = 90
-        end
+    inherited pnlBtnAlterar1: TPanel
+      ExplicitLeft = 569
+      ExplicitHeight = 47
+      inherited pnlBtnAlterar2: TPanel
+        ExplicitWidth = 89
+        ExplicitHeight = 41
+      end
+    end
+    inherited pnlBtnCadastrar1: TPanel
+      ExplicitLeft = 458
+      ExplicitHeight = 47
+      inherited pnlBtnCadastrar2: TPanel
+        ExplicitWidth = 89
+        ExplicitHeight = 41
       end
     end
   end

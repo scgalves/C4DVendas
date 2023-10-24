@@ -153,6 +153,16 @@
         <DCCReference Include="Src\View\Grupos\View.Grupos.Cadastrar.pas">
             <Form>ViewGruposCadastrar</Form>
         </DCCReference>
+        <DCCReference Include="Src\Model\Subgrupos\Model.Subgrupos.DM.pas">
+            <Form>ModelSubgruposDM</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Src\View\Subgrupos\View.Subgrupos.Buscar.pas">
+            <Form>ViewSubgruposBuscar</Form>
+        </DCCReference>
+        <DCCReference Include="Src\View\Subgrupos\View.Subgrupos.Cadastrar.pas">
+            <Form>ViewSubgruposCadastrar</Form>
+        </DCCReference>
         <None Include="C4DVendas.todo"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
