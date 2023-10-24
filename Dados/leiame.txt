@@ -1,4 +1,0 @@
-1) Os scripts SQL não fazem parte do curso do Code4Delphi. Fiz a inclusão destes arquivos,
-caso alguém queira criar o banco do zero e com alguns registros. Portanto, propositalmente
-o arquivo DADOS.FDB não está no repositório.
-2) O script "02_cidades.SQL" contempla 5.571 cidades do Brasil.
