@@ -2,9 +2,11 @@ inherited ViewCidadesBuscar: TViewCidadesBuscar
   Caption = 'Cidades buscar'
   ClientWidth = 914
   OnDestroy = FormDestroy
+  ExplicitHeight = 583
   TextHeight = 15
   inherited GridPanel1: TGridPanel
     Width = 898
+    ExplicitHeight = 465
     inherited edtBuscar: TLabeledEdit
       Width = 657
     end
@@ -12,6 +14,12 @@ inherited ViewCidadesBuscar: TViewCidadesBuscar
       Left = 673
       Width = 225
       Visible = False
+      inherited lblFiltroCombo: TLabel
+        Width = 209
+      end
+      inherited cmbFiltroCombo: TComboBox
+        Width = 209
+      end
     end
     inherited DBGrid1: TDBGrid
       Width = 882
@@ -51,19 +59,20 @@ inherited ViewCidadesBuscar: TViewCidadesBuscar
     inherited lbTotal: TLabel
       Left = 673
       Width = 217
+      ExplicitTop = 441
     end
   end
   inherited pnlRodape: TPanel
     Width = 898
-    ExplicitTop = 474
-    ExplicitWidth = 894
+    ExplicitLeft = -328
+    ExplicitTop = 330
     inherited rdgFiltros: TRadioGroup
       Columns = 3
       ItemIndex = 1
       Items.Strings = (
-        'C'#243'digo'
-        'Nome'
-        'UF')
+        'C'#243'digo (F1)'
+        'Nome (F2)'
+        'UF (F3)')
       ExplicitTop = 0
       ExplicitWidth = 434
       ExplicitHeight = 55

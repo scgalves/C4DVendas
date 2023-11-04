@@ -12,8 +12,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private
-
   public
+    FIdGrupo: integer; // Utilizado quando o produto for cadastrado, para filtrar somente os subgrupos de um grupo
     procedure BuscarDados; override;
     procedure ChamarTelaCadastrar(const AId: Integer = 0); override;
   end;
@@ -40,7 +40,11 @@ begin
   case rdgFiltros.ItemIndex of
     0: LCondicao := 'where s.id like ' + LStrBuscar;
     1: LCondicao := 'where upper(s.descricao) like ' + LStrBuscar;
+    2: LCondicao := 'where upper(g.descricao) like ' + LStrBuscar;
   end;
+
+  if Self.FIdGrupo <> 0 then
+    LCondicao := Format('%s and s.id_grupo = %d', [LCondicao, Self.FIdGrupo]);
 
   ModelSubgruposDM.SubgruposBuscar(LCondicao);
   inherited;

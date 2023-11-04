@@ -51,6 +51,12 @@ type
     procedure QPessoasCadastroAfterInsert(DataSet: TDataSet);
     procedure QPessoasCadastroDT_NASCIMENTOSetText(Sender: TField; const Text: string);
     procedure QPessoasCadastroAfterOpen(DataSet: TDataSet);
+    procedure QPessoasCadastroNOMESetText(Sender: TField; const Text: string);
+    procedure QPessoasCadastroFANTASIA_APELIDOSetText(Sender: TField; const Text: string);
+    procedure QPessoasCadastroLOGRADOUROSetText(Sender: TField; const Text: string);
+    procedure QPessoasCadastroNUMEROSetText(Sender: TField; const Text: string);
+    procedure QPessoasCadastroCOMPLEMENTOSetText(Sender: TField; const Text: string);
+    procedure QPessoasCadastroBAIRROSetText(Sender: TField; const Text: string);
   private
   public
     procedure PessoasBuscar(const ACondicao: string);
@@ -116,11 +122,9 @@ end;
 
 procedure TModelPessoasDM.QPessoasCadastroAfterInsert(DataSet: TDataSet);
 begin
-  {ToDo: Ver a real necessidade destes códigos neste método.}
   QPessoasCadastroATIVO.AsString := 'S';
   QPessoasCadastroCLIENTE.AsString := 'S';
   QPessoasCadastroFORNECEDOR.AsString := 'S';
-//  QPessoasCadastroDH_CADASTRO.AsDateTime := Now; // DefaultValue do banco
   QPessoasCadastroTIPO_JURIDICO.AsInteger := 0;
   QPessoasCadastroCPF_CNPJ.EditMask := '999\.999\.999\-99;0;_';
 end;
@@ -135,9 +139,19 @@ begin
   end;
 end;
 
+procedure TModelPessoasDM.QPessoasCadastroBAIRROSetText(Sender: TField; const Text: string);
+begin
+  QPessoasCadastroBAIRRO.AsString := QPessoasCadastroBAIRRO.AsString.Trim;
+end;
+
 procedure TModelPessoasDM.QPessoasCadastroBeforePost(DataSet: TDataSet);
 begin
   Self.ValidarDadosQueryCadastro;
+end;
+
+procedure TModelPessoasDM.QPessoasCadastroCOMPLEMENTOSetText(Sender: TField; const Text: string);
+begin
+  QPessoasCadastroCOMPLEMENTO.AsString := QPessoasCadastroCOMPLEMENTO.AsString.Trim;
 end;
 
 procedure TModelPessoasDM.QPessoasCadastroDT_NASCIMENTOSetText(Sender: TField; const Text: string);
@@ -157,6 +171,26 @@ begin
   finally
     QPessoasCadastroDT_NASCIMENTO.AsDateTime := LData;
   end;
+end;
+
+procedure TModelPessoasDM.QPessoasCadastroFANTASIA_APELIDOSetText(Sender: TField; const Text: string);
+begin
+  QPessoasCadastroFANTASIA_APELIDO.AsString := QPessoasCadastroFANTASIA_APELIDO.AsString.Trim;
+end;
+
+procedure TModelPessoasDM.QPessoasCadastroLOGRADOUROSetText(Sender: TField; const Text: string);
+begin
+  QPessoasCadastroLOGRADOURO.AsString := QPessoasCadastroLOGRADOURO.AsString.Trim;
+end;
+
+procedure TModelPessoasDM.QPessoasCadastroNOMESetText(Sender: TField; const Text: string);
+begin
+  QPessoasCadastroNOME.AsString := QPessoasCadastroNOME.AsString.Trim;
+end;
+
+procedure TModelPessoasDM.QPessoasCadastroNUMEROSetText(Sender: TField; const Text: string);
+begin
+  QPessoasCadastroNUMERO.AsString := QPessoasCadastroNUMERO.AsString.Trim;
 end;
 
 procedure TModelPessoasDM.ValidarDadosQueryCadastro;

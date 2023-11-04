@@ -1,5 +1,5 @@
-inherited ViewSubgruposBuscar: TViewSubgruposBuscar
-  Caption = 'Subgrupos buscar'
+inherited ViewProdutosBuscar: TViewProdutosBuscar
+  Caption = 'Produtos buscar'
   ClientHeight = 547
   ClientWidth = 918
   OnDestroy = FormDestroy
@@ -9,7 +9,6 @@ inherited ViewSubgruposBuscar: TViewSubgruposBuscar
   inherited GridPanel1: TGridPanel
     Width = 902
     Height = 462
-    ExplicitWidth = 898
     ExplicitHeight = 461
     inherited edtBuscar: TLabeledEdit
       Width = 660
@@ -18,7 +17,6 @@ inherited ViewSubgruposBuscar: TViewSubgruposBuscar
     inherited pnlFiltroCombo: TPanel
       Left = 676
       Width = 226
-      Visible = False
       ExplicitLeft = 676
       ExplicitWidth = 226
       inherited lblFiltroCombo: TLabel
@@ -30,6 +28,7 @@ inherited ViewSubgruposBuscar: TViewSubgruposBuscar
         Width = 210
         ItemIndex = 0
         Text = 'Ativo e Inativo'
+        OnChange = cmbFiltroComboChange
         Items.Strings = (
           'Ativo e Inativo'
           'Ativo'
@@ -48,8 +47,48 @@ inherited ViewSubgruposBuscar: TViewSubgruposBuscar
         end
         item
           Expanded = False
-          FieldName = 'ID_GRUPO'
-          Visible = False
+          FieldName = 'ATIVO'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NOME'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'PRODUTODESCRICAO'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CODIGO_BARRAS'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'PRECO_CUSTO'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'PORCENTAGEM_VENDA'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'PRECO_VENDA'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'UNIDADE'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'GRUPODESCRICAO'
+          Visible = True
         end
         item
           Expanded = False
@@ -58,20 +97,7 @@ inherited ViewSubgruposBuscar: TViewSubgruposBuscar
         end
         item
           Expanded = False
-          FieldName = 'GRUPODESCRICAO'
-          Width = 64
-          Visible = True
-        end
-        item
-          Expanded = False
           FieldName = 'DTHR_INSERT'
-          Width = 64
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'DTHR_UPDATE'
-          Width = 64
           Visible = True
         end>
     end
@@ -91,20 +117,20 @@ inherited ViewSubgruposBuscar: TViewSubgruposBuscar
       ItemIndex = 1
       Items.Strings = (
         'C'#243'digo (F1)'
-        'Subgrupo Descr. (F2)'
-        'Grupo Descr. (F3)')
-      ExplicitHeight = 61
+        'Nome (F2)'
+        'Produto Descr. (F3)'
+        'C'#243'd. de Barras (F4)'
+        'Grupo Descr. (F5)'
+        'Subgrupo Descr. (F6)')
     end
     inherited pnlBtnFechar1: TPanel
       Left = 797
       Width = 97
       ExplicitLeft = 793
       ExplicitWidth = 97
-      ExplicitHeight = 53
       inherited pnlBtnFechar2: TPanel
         Width = 91
         ExplicitWidth = 91
-        ExplicitHeight = 47
         inherited btnFechar: TSpeedButton
           Width = 91
           ExplicitWidth = 91
@@ -114,27 +140,17 @@ inherited ViewSubgruposBuscar: TViewSubgruposBuscar
     inherited pnlBtnUtilizar1: TPanel
       Left = 686
       ExplicitLeft = 682
-      ExplicitHeight = 53
-      inherited pnlBtnUtilizar2: TPanel
-        ExplicitHeight = 47
-      end
     end
     inherited pnlBtnAlterar1: TPanel
       Left = 575
       ExplicitLeft = 571
-      ExplicitHeight = 53
-      inherited pnlBtnAlterar2: TPanel
-        ExplicitHeight = 47
-      end
     end
     inherited pnlBtnCadastrar1: TPanel
       Width = 97
       ExplicitWidth = 97
-      ExplicitHeight = 53
       inherited pnlBtnCadastrar2: TPanel
         Width = 91
         ExplicitWidth = 91
-        ExplicitHeight = 47
         inherited btnCadastrar: TSpeedButton
           Width = 91
           ExplicitWidth = 91
@@ -143,6 +159,6 @@ inherited ViewSubgruposBuscar: TViewSubgruposBuscar
     end
   end
   inherited DataSource1: TDataSource
-    DataSet = ModelSubgruposDM.QSubgruposBusca
+    DataSet = ModelProdutosDM.QProdutosBusca
   end
 end

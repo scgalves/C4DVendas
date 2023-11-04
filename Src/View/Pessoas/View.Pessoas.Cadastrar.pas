@@ -49,12 +49,10 @@ type
     procedure edtIdCidadeExit(Sender: TObject);
     procedure rdgTIPO_JURIDICOClick(Sender: TObject);
   private
+
   public
 
   end;
-
-{var
-  ViewPessoasCadastrar: TViewPessoasCadastrar;}
 
 implementation
 

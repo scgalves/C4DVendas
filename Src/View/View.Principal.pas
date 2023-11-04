@@ -58,7 +58,7 @@ var
 implementation
 
 uses
-  View.Cidades.Buscar, View.Pessoas.Buscar, View.Grupos.Buscar, View.Subgrupos.Buscar;
+  View.Cidades.Buscar, View.Pessoas.Buscar, View.Grupos.Buscar, View.Subgrupos.Buscar, View.Produtos.Buscar;
 
 {$R *.dfm}
 
@@ -137,7 +137,13 @@ end;
 
 procedure TViewPrincipal.mniProdutoClick(Sender: TObject);
 begin
-  ShowMessage('Em construção');
+  if not Assigned(ViewProdutosBuscar) then
+    ViewProdutosBuscar := TViewProdutosBuscar.Create(nil);
+  try
+    ViewProdutosBuscar.ShowModal;
+  finally
+    FreeAndNil(ViewProdutosBuscar);
+  end;
 end;
 
 procedure TViewPrincipal.mniSubgrupoProdutoClick(Sender: TObject);

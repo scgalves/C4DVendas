@@ -22,6 +22,7 @@ object ModelCidadesDM: TModelCidadesDM
       DisplayLabel = 'Nome'
       FieldName = 'NOME'
       Origin = 'NOME'
+      OnSetText = QCidadesCadastroNOMESetText
       Size = 60
     end
     object QCidadesCadastroUF: TStringField

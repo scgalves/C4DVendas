@@ -1,6 +1,6 @@
 object ModelSubgruposDM: TModelSubgruposDM
   OnCreate = DataModuleCreate
-  Height = 82
+  Height = 137
   Width = 265
   object QSubgruposCadastro: TFDQuery
     BeforePost = QSubgruposCadastroBeforePost
@@ -28,6 +28,7 @@ object ModelSubgruposDM: TModelSubgruposDM
       FieldName = 'DESCRICAO'
       Origin = 'DESCRICAO'
       Required = True
+      OnSetText = QSubgruposCadastroDESCRICAOSetText
       Size = 60
     end
     object QSubgruposCadastroDTHR_INSERT: TSQLTimeStampField
@@ -91,6 +92,27 @@ object ModelSubgruposDM: TModelSubgruposDM
       DisplayLabel = #218'ltima Atualiza'#231#227'o'
       FieldName = 'DTHR_UPDATE'
       Origin = 'DTHR_UPDATE'
+    end
+  end
+  object QLook: TFDQuery
+    Connection = ModelConexaoDM.FDConnection1
+    SQL.Strings = (
+      'select descricao'
+      'from subgrupo'
+      'where id = :IdSubgrupo')
+    Left = 48
+    Top = 72
+    ParamData = <
+      item
+        Name = 'IDSUBGRUPO'
+        ParamType = ptInput
+      end>
+    object QLookDESCRICAO: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Required = True
+      Size = 60
     end
   end
 end

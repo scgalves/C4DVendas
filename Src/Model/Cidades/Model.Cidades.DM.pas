@@ -28,6 +28,7 @@ type
     QCidadesBuscaDTHR_UPDATE: TSQLTimeStampField;
     procedure QCidadesCadastroBeforePost(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
+    procedure QCidadesCadastroNOMESetText(Sender: TField; const Text: string);
   private
     { Private declarations }
   public
@@ -74,6 +75,11 @@ end;
 procedure TModelCidadesDM.QCidadesCadastroBeforePost(DataSet: TDataSet);
 begin
   Self.ValidarDadosQueryCadastro;
+end;
+
+procedure TModelCidadesDM.QCidadesCadastroNOMESetText(Sender: TField; const Text: string);
+begin
+  QCidadesCadastroNOME.AsString := QCidadesCadastroNOME.AsString.Trim;
 end;
 
 procedure TModelCidadesDM.ValidarDadosQueryCadastro;

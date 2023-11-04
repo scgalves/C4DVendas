@@ -23,12 +23,14 @@ object ModelPessoasDM: TModelPessoasDM
       DisplayLabel = 'Nome/Raz'#227'o Social'
       FieldName = 'NOME'
       Origin = 'NOME'
+      OnSetText = QPessoasCadastroNOMESetText
       Size = 60
     end
     object QPessoasCadastroFANTASIA_APELIDO: TStringField
       DisplayLabel = 'Nome de Fantasia/Apelido'
       FieldName = 'FANTASIA_APELIDO'
       Origin = 'FANTASIA_APELIDO'
+      OnSetText = QPessoasCadastroFANTASIA_APELIDOSetText
       Size = 60
     end
     object QPessoasCadastroCLIENTE: TStringField
@@ -49,23 +51,27 @@ object ModelPessoasDM: TModelPessoasDM
       DisplayLabel = 'Logradouro'
       FieldName = 'LOGRADOURO'
       Origin = 'LOGRADOURO'
+      OnSetText = QPessoasCadastroLOGRADOUROSetText
       Size = 60
     end
     object QPessoasCadastroNUMERO: TStringField
       DisplayLabel = 'N'#250'mero'
       FieldName = 'NUMERO'
       Origin = 'NUMERO'
+      OnSetText = QPessoasCadastroNUMEROSetText
     end
     object QPessoasCadastroCOMPLEMENTO: TStringField
       DisplayLabel = 'Complemento'
       FieldName = 'COMPLEMENTO'
       Origin = 'COMPLEMENTO'
+      OnSetText = QPessoasCadastroCOMPLEMENTOSetText
       Size = 40
     end
     object QPessoasCadastroBAIRRO: TStringField
       DisplayLabel = 'Bairro'
       FieldName = 'BAIRRO'
       Origin = 'BAIRRO'
+      OnSetText = QPessoasCadastroBAIRROSetText
       Size = 40
     end
     object QPessoasCadastroCEP: TStringField

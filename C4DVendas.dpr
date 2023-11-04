@@ -22,7 +22,10 @@ uses
   View.Grupos.Cadastrar in 'Src\View\Grupos\View.Grupos.Cadastrar.pas' {ViewGruposCadastrar},
   Model.Subgrupos.DM in 'Src\Model\Subgrupos\Model.Subgrupos.DM.pas' {ModelSubgruposDM: TDataModule},
   View.Subgrupos.Buscar in 'Src\View\Subgrupos\View.Subgrupos.Buscar.pas' {ViewSubgruposBuscar},
-  View.Subgrupos.Cadastrar in 'Src\View\Subgrupos\View.Subgrupos.Cadastrar.pas' {ViewSubgruposCadastrar};
+  View.Subgrupos.Cadastrar in 'Src\View\Subgrupos\View.Subgrupos.Cadastrar.pas' {ViewSubgruposCadastrar},
+  Model.Produtos.DM in 'Src\Model\Produtos\Model.Produtos.DM.pas' {ModelProdutosDM: TDataModule},
+  View.Produtos.Buscar in 'Src\View\Produtos\View.Produtos.Buscar.pas' {ViewProdutosBuscar},
+  View.Produtos.Cadastrar in 'Src\View\Produtos\View.Produtos.Cadastrar.pas' {ViewProdutosCadastrar};
 
 {$R *.res}
 

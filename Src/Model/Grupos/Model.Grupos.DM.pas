@@ -23,6 +23,7 @@ type
     QLookDESCRICAO: TStringField;
     procedure QGruposCadastroBeforePost(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
+    procedure QGruposCadastroDESCRICAOSetText(Sender: TField; const Text: string);
   private
     { Private declarations }
   public
@@ -69,6 +70,11 @@ end;
 procedure TModelGruposDM.QGruposCadastroBeforePost(DataSet: TDataSet);
 begin
   Self.ValidarDadosQueryCadastro;
+end;
+
+procedure TModelGruposDM.QGruposCadastroDESCRICAOSetText(Sender: TField; const Text: string);
+begin
+  QGruposCadastroDESCRICAO.AsString := QGruposCadastroDESCRICAO.AsString.Trim;
 end;
 
 procedure TModelGruposDM.ValidarDadosQueryCadastro;

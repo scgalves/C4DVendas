@@ -22,12 +22,10 @@ type
     procedure edtIdGrupoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure edtIdGrupoExit(Sender: TObject);
   private
+
   public
 
   end;
-
-{var
-  ViewPessoasCadastrar: TViewPessoasCadastrar;}
 
 implementation
 

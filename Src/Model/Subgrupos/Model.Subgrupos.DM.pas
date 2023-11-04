@@ -22,13 +22,18 @@ type
     QSubgruposBuscaGRUPODESCRICAO: TStringField;
     QSubgruposBuscaSUBGRUPODESCRICAO: TStringField;
     QSubgruposBuscaDTHR_UPDATE: TSQLTimeStampField;
+    QLook: TFDQuery;
+    QLookDESCRICAO: TStringField;
     procedure QSubgruposCadastroBeforePost(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
+    procedure QSubgruposCadastroDESCRICAOSetText(Sender: TField; const Text: string);
   private
   public
+    FIdGrupo: integer;
     procedure SubgruposBuscar(const ACondicao: string);
     procedure CadastrarGet(const AIdSubgrupo: integer);
     procedure ValidarDadosQueryCadastro;
+    procedure LookSubgrupo(const AIdSubgrupo: integer);
   end;
 
 var
@@ -39,7 +44,7 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 uses
-  Model.Conexao.DM, RTTI.FieldName, Exceptions.FieldName, Utils;
+  Model.Conexao.DM, RTTI.FieldName, Exceptions.FieldName;
 
 {$R *.dfm}
 
@@ -60,6 +65,13 @@ begin
   QSubgruposBusca.FetchOptions.Mode := fmAll;
 end;
 
+procedure TModelSubgruposDM.LookSubgrupo(const AIdSubgrupo: integer);
+begin
+  QLook.Close;
+  QLook.ParamByName('IdSubgrupo').AsInteger := AIdSubgrupo;
+  QLook.Open;
+end;
+
 procedure TModelSubgruposDM.SubgruposBuscar(const ACondicao: string);
 begin
   QSubgruposBusca.Close;
@@ -73,6 +85,11 @@ end;
 procedure TModelSubgruposDM.QSubgruposCadastroBeforePost(DataSet: TDataSet);
 begin
   Self.ValidarDadosQueryCadastro;
+end;
+
+procedure TModelSubgruposDM.QSubgruposCadastroDESCRICAOSetText(Sender: TField; const Text: string);
+begin
+  QSubgruposCadastroDESCRICAO.AsString := QSubgruposCadastroDESCRICAO.AsString.Trim;
 end;
 
 procedure TModelSubgruposDM.ValidarDadosQueryCadastro;

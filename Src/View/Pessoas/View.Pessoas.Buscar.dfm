@@ -8,9 +8,9 @@ inherited ViewPessoasBuscar: TViewPessoasBuscar
   TextHeight = 15
   inherited GridPanel1: TGridPanel
     Width = 902
-    Height = 531
+    Height = 468
     ExplicitWidth = 898
-    ExplicitHeight = 530
+    ExplicitHeight = 467
     inherited edtBuscar: TLabeledEdit
       Width = 660
       ExplicitWidth = 660
@@ -21,10 +21,12 @@ inherited ViewPessoasBuscar: TViewPessoasBuscar
       ExplicitLeft = 676
       ExplicitWidth = 226
       inherited lblFiltroCombo: TLabel
+        Width = 210
         Caption = 'Cadastro'
         ExplicitWidth = 47
       end
       inherited cmbFiltroCombo: TComboBox
+        Width = 210
         ItemIndex = 0
         Text = 'Ativo e Inativo'
         OnChange = cmbFiltroComboChange
@@ -32,7 +34,7 @@ inherited ViewPessoasBuscar: TViewPessoasBuscar
           'Ativo e Inativo'
           'Ativo'
           'Inativo')
-        ExplicitWidth = 215
+        ExplicitWidth = 210
       end
     end
     inherited DBGrid1: TDBGrid
@@ -110,57 +112,50 @@ inherited ViewPessoasBuscar: TViewPessoasBuscar
           Visible = True
         end>
     end
-    inherited rdgFiltros: TRadioGroup
-      Top = 468
-      Width = 435
-      Columns = 3
-      ItemIndex = 1
-      Items.Strings = (
-        'C'#243'digo'
-        'Nome/Fantasia'
-        'Cidade')
-      ExplicitTop = 468
-      ExplicitWidth = 435
-    end
     inherited lbTotal: TLabel
       Left = 676
       Top = 443
       Width = 218
+      ExplicitLeft = 747
+      ExplicitTop = 443
     end
-    inherited pnlBtnCadastrar1: TPanel
-      Left = 459
-      Top = 475
-      Width = 97
-      ExplicitLeft = 459
-      ExplicitTop = 475
-      ExplicitWidth = 97
-      inherited pnlBtnCadastrar2: TPanel
-        ExplicitWidth = 91
-      end
-    end
-    inherited pnlBtnAlterar1: TPanel
-      Left = 572
-      Top = 475
-      ExplicitLeft = 572
-      ExplicitTop = 475
-    end
-    inherited pnlBtnUtilizar1: TPanel
-      Left = 684
-      Top = 475
-      ExplicitLeft = 684
-      ExplicitTop = 475
-      inherited pnlBtnUtilizar2: TPanel
-        ExplicitWidth = 91
-      end
+  end
+  inherited pnlRodape: TPanel
+    Top = 476
+    Width = 902
+    inherited rdgFiltros: TRadioGroup
+      Columns = 3
+      ItemIndex = 1
+      Items.Strings = (
+        'C'#243'digo (F1)'
+        'Nome/Fantasia (F2)'
+        'Cidade (F3)')
+      ExplicitTop = 0
+      ExplicitWidth = 434
     end
     inherited pnlBtnFechar1: TPanel
       Left = 797
-      Top = 475
       Width = 97
-      ExplicitLeft = 797
-      ExplicitTop = 475
+      ExplicitLeft = 793
       ExplicitWidth = 97
       inherited pnlBtnFechar2: TPanel
+        Width = 91
+        ExplicitWidth = 91
+      end
+    end
+    inherited pnlBtnUtilizar1: TPanel
+      Left = 686
+    end
+    inherited pnlBtnAlterar1: TPanel
+      Left = 575
+      ExplicitLeft = 571
+    end
+    inherited pnlBtnCadastrar1: TPanel
+      Width = 97
+      ExplicitLeft = 458
+      ExplicitWidth = 97
+      inherited pnlBtnCadastrar2: TPanel
+        Width = 91
         ExplicitWidth = 91
       end
     end

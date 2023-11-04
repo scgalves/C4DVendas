@@ -70,8 +70,8 @@ inherited ViewSubgruposCadastrar: TViewSubgruposCadastrar
       item
         Value = 25.000000000000000000
       end>
-    ExplicitWidth = 546
-    ExplicitHeight = 451
+    ExplicitWidth = 514
+    ExplicitHeight = 262
     object edtID: TDBLabeledEdit
       AlignWithMargins = True
       Left = 8
@@ -118,9 +118,6 @@ inherited ViewSubgruposCadastrar: TViewSubgruposCadastrar
       EditLabel.Font.Style = [fsBold]
       EditLabel.ParentFont = False
       EditLabel.Layout = tlCenter
-      ExplicitLeft = 138
-      ExplicitTop = 24
-      ExplicitWidth = 373
     end
     object edtIdGrupo: TLabeledEdit
       AlignWithMargins = True
@@ -146,8 +143,6 @@ inherited ViewSubgruposCadastrar: TViewSubgruposCadastrar
       Text = ''
       OnExit = edtIdGrupoExit
       OnKeyDown = edtIdGrupoKeyDown
-      ExplicitLeft = 138
-      ExplicitTop = 153
     end
     object edtNomeGrupo: TLabeledEdit
       AlignWithMargins = True
@@ -169,9 +164,6 @@ inherited ViewSubgruposCadastrar: TViewSubgruposCadastrar
       ReadOnly = True
       TabOrder = 3
       Text = ''
-      ExplicitLeft = 268
-      ExplicitTop = 153
-      ExplicitWidth = 243
     end
     object edtDTHR_INSERT: TDBLabeledEdit
       AlignWithMargins = True
@@ -194,8 +186,6 @@ inherited ViewSubgruposCadastrar: TViewSubgruposCadastrar
       EditLabel.Height = 15
       EditLabel.Caption = 'Data do Cadastro'
       EditLabel.Layout = tlCenter
-      ExplicitTop = 411
-      ExplicitWidth = 244
     end
     object edtDTHR_UPDATE: TDBLabeledEdit
       AlignWithMargins = True
@@ -218,22 +208,20 @@ inherited ViewSubgruposCadastrar: TViewSubgruposCadastrar
       EditLabel.Height = 15
       EditLabel.Caption = #218'ltima Altera'#231#227'o'
       EditLabel.Layout = tlCenter
-      ExplicitLeft = 268
-      ExplicitTop = 411
     end
   end
   inherited pnlRodape: TPanel
     Top = 271
     Width = 518
-    ExplicitTop = 458
-    ExplicitWidth = 905
+    ExplicitTop = 270
+    ExplicitWidth = 514
     inherited pnlBtnGravar: TPanel
       Left = 266
-      ExplicitLeft = 653
+      ExplicitLeft = 262
     end
     inherited pnlBtnCancelar1: TPanel
       Left = 392
-      ExplicitLeft = 779
+      ExplicitLeft = 388
       inherited pnlBtnCancelar2: TPanel
         inherited btnCancelar: TSpeedButton
           ExplicitLeft = 633
