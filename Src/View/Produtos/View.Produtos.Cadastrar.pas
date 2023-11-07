@@ -29,6 +29,7 @@ type
     [FieldName('ID_SUBGRUPO')]
     edtIdSubgrupo: TLabeledEdit;
     edtDescricaoSubgrupo: TLabeledEdit;
+    [FieldName('CODIGO_BARRAS')]
     edtCODIGO_BARRAS: TDBLabeledEdit;
     pnlUnidade: TPanel;
     lblUnidade: TLabel;
@@ -40,11 +41,12 @@ type
     procedure edtIdGrupoExit(Sender: TObject);
     procedure edtIdSubgrupoExit(Sender: TObject);
     procedure edtIdSubgrupoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure edtPRECO_VENDAExit(Sender: TObject);
     procedure edtPRECO_CUSTOExit(Sender: TObject);
     procedure edtPORCENTAGEM_VENDAExit(Sender: TObject);
+    procedure edtPRECO_VENDAExit(Sender: TObject);
   private
-    function CalcularPorcentagemVenda: Double;
+    function CalcularPorcentagemVenda: Single;
+    function CalcularPrecoVenda: Single;
   public
 
   end;
@@ -59,8 +61,8 @@ uses
 
 procedure TViewProdutosCadastrar.btnGravarClick(Sender: TObject);
 begin
-  if DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat < DataSource1.DataSet.FieldByName('PRECO_CUSTO').AsFloat then
-    if Application.MessageBox('O Preço de Venda é menor do que o Preço de Custo.' + sLineBreak +
+  if DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat <= DataSource1.DataSet.FieldByName('PRECO_CUSTO').AsFloat then
+    if Application.MessageBox('O Preço de Venda é menor ou igual ao que o Preço de Custo.' + sLineBreak +
       'Confirma a Gravação?', 'Atenção', MB_ICONWARNING + MB_YESNO + MB_DEFBUTTON2) = IDNO then
     begin
       edtPRECO_VENDA.SetFocus;
@@ -70,6 +72,8 @@ begin
   try
     if cmbUnidade.Text <> '' then
       DataSource1.DataSet.FieldByName('UNIDADE').AsString := Copy(cmbUnidade.Text, 1, 3);
+
+    TUtils.TryActiveControlOnExit; //Executa algum OnExit pendente
     DataSource1.Dataset.Post;
   except
     on E: ExceptionsFieldName do
@@ -78,10 +82,33 @@ begin
   inherited;
 end;
 
-function TViewProdutosCadastrar.CalcularPorcentagemVenda: Double;
+function TViewProdutosCadastrar.CalcularPorcentagemVenda: Single;
 begin
-  Result := ((DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat * 100) /
-    DataSource1.DataSet.FieldByName('PRECO_CUSTO').AsFloat) - 100;
+  // Fórmula
+  // % Venda := (1 - (R$ Custo / R$ Venda)) * 100
+  Result := TUtils.Arredondar(
+                              (1 - (
+                                    DataSource1.DataSet.FieldByName('PRECO_CUSTO').AsFloat /
+                                      DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat
+                                   )
+                              )
+                              * 100,
+                              2
+                             );
+end;
+
+function TViewProdutosCadastrar.CalcularPrecoVenda: Single;
+begin
+  // Fórmula
+  // R$ Venda := R$ Custo / (1 - (% Venda / 100))
+  Result := TUtils.Arredondar(
+                              DataSource1.DataSet.FieldByName('PRECO_CUSTO').AsFloat /
+                                (1 - (
+                                      DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat / 100
+                                     )
+                                ),
+                              2
+                             );
 end;
 
 procedure TViewProdutosCadastrar.edtIdGrupoExit(Sender: TObject);
@@ -172,24 +199,71 @@ begin
 end;
 
 procedure TViewProdutosCadastrar.edtPORCENTAGEM_VENDAExit(Sender: TObject);
+var
+  LPrecoVenda: string;
 begin
   inherited;
-  if DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat > 0 then
-    DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat :=  DataSource1.DataSet.FieldByName('PRECO_CUSTO').AsFloat *
-      (1 + (DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat / 100));
+  if (DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat > 0) and
+    (DataSource1.DataSet.FieldByName('PRECO_CUSTO').AsFloat > 0) then
+    if DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat > 0 then
+    begin
+      LPrecoVenda := FormatFloat(',0.00', CalcularPrecoVenda);
+      if LPrecoVenda <> FormatFloat(',0.00', DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat) then
+        if Application.MessageBox(PChar(Format('O Preço de Venda atual é de %s. Deseja corrigir o Preço de Venda para %s?',
+          [FormatFloat(',0.00', DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat),
+          LPrecoVenda])), 'Confirmação', MB_ICONQUESTION + MB_YESNO) = ID_YES then
+            DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat :=
+              StrToFloat(StringReplace(LPrecoVenda, '.', '', []));
+    end
+    else
+      DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat := CalcularPrecoVenda;
 end;
 
 procedure TViewProdutosCadastrar.edtPRECO_CUSTOExit(Sender: TObject);
+var
+  LPrecoVenda: string;
 begin
   inherited;
-  if DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat > 0 then
-    DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat := CalcularPorcentagemVenda;
+  if DataSource1.DataSet.FieldByName('PRECO_CUSTO').AsFloat > 0 then
+    if DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat > 0 then
+    begin
+      if DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat > 0 then
+      begin
+        LPrecoVenda := FormatFloat(',0.00', CalcularPrecoVenda);
+        if LPrecoVenda <> FormatFloat(',0.00', DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat) then
+          if Application.MessageBox(PChar(Format('O Preço de Venda atual é de %s. Deseja corrigir o Preço de Venda para %s?',
+            [FormatFloat(',0.00', DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat),
+            LPrecoVenda])), 'Confirmação', MB_ICONQUESTION + MB_YESNO) = ID_YES then
+              DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat :=
+                StrToFloat(StringReplace(LPrecoVenda, '.', '', []));
+      end
+      else
+        DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat := CalcularPrecoVenda;
+    end
+    else
+      if DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat > 0 then
+        DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat := CalcularPorcentagemVenda;
 end;
 
 procedure TViewProdutosCadastrar.edtPRECO_VENDAExit(Sender: TObject);
+var
+  LPercentualVenda: string;
 begin
   inherited;
-  DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat := CalcularPorcentagemVenda;
+  if DataSource1.DataSet.FieldByName('PRECO_VENDA').AsFloat > 0 then
+    if DataSource1.DataSet.FieldByName('PRECO_CUSTO').AsFloat > 0 then
+      if DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat > 0 then
+      begin
+        LPercentualVenda := FormatFloat(',0.00', CalcularPorcentagemVenda);
+        if LPercentualVenda <> FormatFloat(',0.00', DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat) then
+          if Application.MessageBox(PChar(Format('O %% de Venda atual é de %s. Deseja corrigir o %% de Venda para %s?',
+            [FormatFloat(',0.00', DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat),
+            LPercentualVenda])), 'Confirmação', MB_ICONQUESTION + MB_YESNO) = ID_YES then
+            DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat :=
+              StrToFloat(StringReplace(LPercentualVenda, '.', '', []));
+      end
+      else
+        DataSource1.DataSet.FieldByName('PORCENTAGEM_VENDA').AsFloat := CalcularPorcentagemVenda;
 end;
 
 procedure TViewProdutosCadastrar.FormShow(Sender: TObject);
