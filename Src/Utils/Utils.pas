@@ -12,7 +12,9 @@ type
     class procedure SetFocusComponent(AWinControl: TWinControl);
   public
     class procedure TratarExceptionsFieldName(const AForm: TForm; const E: ExceptionsFieldName);
+
     class procedure MakeRoundedControl(AControl: TWinControl);
+
     class procedure ColorirPanelsDeBotoes(const APanels: TArray<TPanel>; const ACor: TColor);
 
     /// <summary>Habilita ou Desablita objetos de uma lista.</summary>
@@ -26,14 +28,10 @@ type
     class procedure MostrarOcultarObjetos(const AControls: TArray<TControl>; const AOcultar: Boolean = True);
     class procedure EstiloPadraoEmBotoesSemGravar(const AButtons: TArray<TSpeedButton>);
 
-    /// <summary>
-    ///   Configura o layout do botão ao passar o mouse sobre.
-    /// </summary>
+    /// <summary>Configura o layout do botão ao passar o mouse sobre.</summary>
     class procedure OnMouseEnterButton(const Sender: TObject);
 
-    /// <summary>
-    ///   Configura o layout do botão ao perder o foco do mouse.
-    /// </summary>
+    /// <summary>Configura o layout do botão ao perder o foco do mouse.</summary>
     class procedure OnMouseLeaveButton(const Sender: TObject);
 
     class function CpfValido(const ACpf: string): Boolean;
@@ -42,14 +40,20 @@ type
 
     class function EmailValido(const AEmail: string): Boolean;
 
+    /// <summary>Captura a data e hora do servidor onde está o banco de dados.</summary>
     class function GetDataHoraServidor: TDateTime;
+
+    /// <summary>Arredondamento de valores com casas decimais. /summary>
+    class function Arredondar(AValue: Single; ACasasDecimais: Byte): Single;
+
+    class procedure TryActiveControlOnExit;
   end;
 
 implementation
 
 uses
   RTTI.FieldName, Winapi.Windows, Winapi.Messages, Lib.Helper, System.StrUtils, RegularExpressions,
-  FireDAC.Comp.Client, Model.Conexao.DM, Consts;
+  FireDAC.Comp.Client, Model.Conexao.DM, Consts, System.Math;
 
 { TUtils }
 
@@ -90,6 +94,19 @@ begin
   end;
 
   raise Exception.Create(E.Message);
+end;
+
+class procedure TUtils.TryActiveControlOnExit;
+begin
+  if Screen.ActiveControl <> nil then
+//    Screen.ActiveForm.ActiveControl.Perform(CM_EXIT, 0, 0);
+//    Screen.ActiveForm.ActiveControl.Perform(WM_NEXTDLGCTL, 1, 0);
+    keybd_event(VK_TAB, 0, KEYEVENTF_EXTENDEDKEY or 0, 0);
+end;
+
+class function TUtils.Arredondar(AValue: Single; ACasasDecimais: Byte): Single;
+begin
+  Result := SimpleRoundTo(AValue, ACasasDecimais * -1);
 end;
 
 class function TUtils.CnpjValido(const ACnpj: string): Boolean;
