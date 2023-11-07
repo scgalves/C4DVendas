@@ -14,6 +14,7 @@ object ModelConexaoDM: TModelConexaoDM
       'Server=192.168.0.103'
       'Port=3259'
       'CharacterSet=WIN1252'
+      'Protocol=TCPIP'
       'DriverID=FB')
     LoginPrompt = False
     Left = 48
