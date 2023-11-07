@@ -130,6 +130,9 @@ begin
   if QProdutosCadastroNOME.AsString.Trim.IsEmpty then
     raise ExceptionsFieldName.Create('Preencha o campo Nome.', 'NOME');
 
+  if Length(QProdutosCadastroNOME.AsString.Trim) < 4 then
+    raise ExceptionsFieldName.Create('O Nome deve ter no mínimo 3 caracteres.', 'NOME');
+
   if QProdutosCadastroPRECO_CUSTO.AsInteger = 0 then
     raise ExceptionsFieldName.Create('Preencha o campo Preço de Custo.', 'PRECO_CUSTO');
 
@@ -147,6 +150,11 @@ begin
 
   if QProdutosCadastroUNIDADE.AsString.Trim.IsEmpty then
     raise ExceptionsFieldName.Create('Preencha o campo Unidade.', 'UNIDADE');
+
+  if (Length(QProdutosCadastroCODIGO_BARRAS.AsString.Trim) > 0) and
+    (Length(QProdutosCadastroCODIGO_BARRAS.AsString.Trim) <> 13) then
+    raise ExceptionsFieldName.Create('O Código de Barras deve ter 13 caracteres.', 'CODIGO_BARRAS');
+
 end;
 
 end.
