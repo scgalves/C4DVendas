@@ -57,7 +57,7 @@ object ModelProdutosDM: TModelProdutosDM
       DisplayLabel = '% de Venda'
       FieldName = 'PORCENTAGEM_VENDA'
       Origin = 'PORCENTAGEM_VENDA'
-      DisplayFormat = ',0'
+      DisplayFormat = ',0.00'
       Precision = 18
       Size = 2
     end
@@ -79,9 +79,12 @@ object ModelProdutosDM: TModelProdutosDM
     end
     object QProdutosCadastroCODIGO_BARRAS: TStringField
       DisplayLabel = 'C'#243'digo de Barras'
+      DisplayWidth = 13
       FieldName = 'CODIGO_BARRAS'
       Origin = 'CODIGO_BARRAS'
       OnSetText = QProdutosCadastroCODIGO_BARRASSetText
+      EditMask = '9999999999999;;_'
+      Size = 13
     end
     object QProdutosCadastroATIVO: TStringField
       DisplayLabel = 'Ativo'
@@ -170,6 +173,7 @@ object ModelProdutosDM: TModelProdutosDM
       DisplayLabel = '% de Venda'
       FieldName = 'PORCENTAGEM_VENDA'
       Origin = 'PORCENTAGEM_VENDA'
+      DisplayFormat = ',0.00'
       Precision = 18
       Size = 2
     end
